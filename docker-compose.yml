@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+  # backend:
+  #   build: ./backend
+  #   container_name: backend-NestJs3
+  #   command: npm run start:prod
+  #   restart: unless-stopped
+  #   # restart: always
+  #   # stdin_open: true
+  #   # tty: true
+  #   volumes:
+  #     - './backend:/app'
+  #   ports:
+  #     - "5000:5000"
+  #   depends_on:
+  #     - mongo
+  #     - postgres11
+
+  mongo:
+    image: mongo:4.4.4
+    container_name: mongo
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo-data-4.4:/data/db
+
+  postgres11:
+    hostname: postgres_db
+    image: postgres:11
+    container_name: postgres11
+    restart: unless-stopped
+    volumes:
+      - ./postgres_db:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
