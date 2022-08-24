@@ -18,6 +18,7 @@ import Store from './store/store';
 //new
 import { useAppDispatch, useAppSelector } from "./redux";
 import { getArticles } from "./redux/thunks/articles";
+import BlogItem from './pages/BlogItem.tsx/BlogItem';
 
 // interface IStore {
 //   store: Store,
@@ -41,7 +42,7 @@ const App: FC = () => {
   //   dispatch(getArticles(filters))
   // }, [filters])
 
-  const {all} = useAppSelector(state => state.products)
+  const { all } = useAppSelector(state => state.posts)
 
   useEffect(() => {
     dispatch(getArticles())
@@ -58,27 +59,28 @@ const App: FC = () => {
     // <Context.Provider value={{
     //   store
     // }}>
-      <Router>
-        <ExtraHeader />
-        <Header />
-        <Routes>
-          <Route path="/about" element={
-            <React.Suspense fallback='loading'>
-              <About />
-            </React.Suspense>
-          } />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/yarn" element={<Main />} />
-          <Route path="/needles" element={<Needles />} />
-          <Route path="/product" element={<Wares />} />
-          <Route path="/" element={<Main />} />
-          <Route path="/item/:itemId" element={<Product />} />
-          <Route path="/login" element={<Person />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/order" element={<Order />} />
-        </Routes>
-        <Footer />
-      </Router>
+    <Router>
+      <ExtraHeader />
+      <Header />
+      <Routes>
+        <Route path="/about" element={
+          <React.Suspense fallback='loading'>
+            <About />
+          </React.Suspense>
+        } />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog-item/:slugItem" element={<BlogItem />} />
+        <Route path="/yarn" element={<Main />} />
+        <Route path="/needles" element={<Needles />} />
+        <Route path="/product" element={<Wares />} />
+        <Route path="/" element={<Main />} />
+        <Route path="/item/:itemId" element={<Product />} />
+        <Route path="/login" element={<Person />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/order" element={<Order />} />
+      </Routes>
+      <Footer />
+    </Router>
     // </Context.Provider>
   );
 }

@@ -14,6 +14,4 @@ import { FileService } from 'src/file/file.service';
     controllers: [TrackController],
     providers: [TrackService, FileService]
 })
-export class TrackModule {
-
-}
+export class TrackModule { }

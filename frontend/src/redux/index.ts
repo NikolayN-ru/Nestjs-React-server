@@ -5,7 +5,7 @@ import { UserReducer } from "./reducers/userReducer/userReducer";
 
 // мерджим редюсеры в один
 const rootReducer = combineReducers({
-    products: ProductsReducer,
+    posts: ProductsReducer,
     user: UserReducer
 })
 

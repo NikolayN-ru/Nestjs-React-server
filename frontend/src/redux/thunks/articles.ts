@@ -2,7 +2,9 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { api } from "../../api/api";
 
 
+// ппоправить тип - совсем нетот
 export interface PostItem {
+    slug: string;
     userId: number,
     id: number,
     title: string,
@@ -20,8 +22,8 @@ export const getArticles = createAsyncThunk<Array<PostItem>, void, { rejectValue
 
         // const posts = await api.get<Array<PostItem>>('/posts', {
         const posts = await api.patch<Array<PostItem>>('/articles/all', {
-            data: { },
-            headers: { }
+            data: {},
+            headers: {}
         })
 
         if (posts.status >= 400) {

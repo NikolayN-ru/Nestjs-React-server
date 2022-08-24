@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const BlogWrapper = styled('div')`
 & {
     padding-top: 40px;
-    height: 70vh;
+    /* height: 70vh; */
     background-color: #F7F9FB;
     margin: 0 auto;
     display: flex;

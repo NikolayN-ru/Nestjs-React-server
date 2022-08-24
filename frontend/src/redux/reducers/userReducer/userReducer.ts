@@ -2,6 +2,7 @@ import {createSlice, isAnyOf, PayloadAction} from "@reduxjs/toolkit";
 //  import {getArticles, PostItem} from "../../thunks/articles";
 import { getLogin, ILogin } from "../../thunks/login";
 import { logoutUser } from "../../thunks/logout";
+import { changeUser } from "../../thunks/shangeUser";
 
 
  interface ProductsState {
@@ -27,6 +28,12 @@ import { logoutUser } from "../../thunks/logout";
  			)
 			 .addMatcher(
 				isAnyOf(logoutUser.fulfilled),
+				(state, action: PayloadAction<Array<ILogin>>) => {
+					state.all = action.payload
+				}
+			)
+			.addMatcher(
+				isAnyOf(changeUser.fulfilled),
 				(state, action: PayloadAction<Array<ILogin>>) => {
 					state.all = action.payload
 				}

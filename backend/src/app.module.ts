@@ -15,6 +15,7 @@ import { AuthMiddleware } from "./user/middlewares/auth.middleware";
 import { ArticleModule } from "./article/article.module";
 import { TelegramModule } from './telegram/telegram.module';
 import { Auth2Module } from './auth2/auth2.module';
+import { YarnModule } from './yarn/yarn.module';
 
 @Module({
     imports: [
@@ -30,7 +31,8 @@ import { Auth2Module } from './auth2/auth2.module';
         UserModule,
         ArticleModule,
         TelegramModule,
-        Auth2Module
+        Auth2Module,
+        YarnModule
     ],
     controllers: [AppController],
     providers: [AppService]
