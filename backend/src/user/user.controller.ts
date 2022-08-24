@@ -24,10 +24,16 @@ export class UserController {
 
     @Post('login')
     @UsePipes(new ValidationPipe())
-    async login(@Body('user') loginUserDto: LoginUserDto): Promise<userResponseInterface> {
+    async login(@Req() req:Request, @Body('user') loginUserDto: LoginUserDto): Promise<userResponseInterface> {
+        // console.log(req.body)
         const user = await this.userService.login(loginUserDto);
         return this.userService.buildUserResponse(user);
     }
+
+    // {
+    //     user: { email: 'napadaylo2@gmail.com', password: 'simple commentwww 2' }
+    //   }
+
 
     @Get('user')
     @UseGuards(AuthGuard)

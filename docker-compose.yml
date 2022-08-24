@@ -16,6 +16,21 @@ services:
   #     - mongo
   #     - postgres11
 
+  # frontend:
+  #   build: ./frontend
+  #   container_name: frontend-ReactJs
+  #   # command: npm run build && npm run start
+  #   command: npm run dev
+  #   restart: unless-stopped
+  #   volumes:
+  #     - './frontend:/app'
+  #   ports:
+  #     - "3070:3070"
+  #   environment:
+  #     - PORT=3000
+  #   depends_on:
+  #     - backend
+
   mongo:
     image: mongo:4.4.4
     container_name: mongo

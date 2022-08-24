@@ -19,9 +19,9 @@ POST http://localhost:5000/users
 Body
 {
     "user":{
-    "username": "Petya2",
-    "email": "data@gmail.com",
-    "password": "simple commentwww 2"
+        "username": "Petya2",
+        "email": "data@gmail.com",
+        "password": "simple commentwww 2"
     } 
 }
 
@@ -93,6 +93,7 @@ GET http://localhost:5000/articles/how-are-you23-76d13d
 DELETE http://localhost:5000/articles/how-are-you23-qyopvtjjj
 
 Authorization Token <ITEM-TOKEN>
+
 
 /how-are-you23-qyopvtjjj <- slug article
 

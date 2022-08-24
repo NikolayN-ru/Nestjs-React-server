@@ -24,7 +24,7 @@ export const ContentWrapper = styled('h1')`
 
 export const Content = styled('h1')`
 & {
-    width: 100%;
+    width: 70%;
     box-sizing: border-box;
     margin-left: 20px;
     display: flex;

@@ -1,5 +1,9 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../redux';
+import { logoutUser } from '../../redux/thunks/logout';
 import { ButtonExit, ButtonSelect, ButtonWrapper, Content, ContentWrapper, PersonTitle, PersonWrapper } from './Person.styled';
+
+import { useLocation } from 'react-router-dom';
 
 interface Iuser {
     id: number;
@@ -12,22 +16,35 @@ interface Iuser {
 }
 
 const Person: FC = () => {
+    const [user, setUser] = useState<string>('LOREM IPSUM DOLOR SIT AMET.');
+
+    const { all } = useAppSelector(state => state.user);
+    const dispatch = useAppDispatch();
+
+    let location = useLocation();
+    console.log('let location = useLocation();', location)
+    const logoutPage = () => {
+        dispatch(logoutUser(null))
+        // return <Redirect to='/'/>
+        // <Redirect push to="/" />
+        // history.push('/')
+    }
 
     return (
         <PersonWrapper>
             <PersonTitle>
                 Страница пользователя
-                <ButtonExit>выйти</ButtonExit>
+                <ButtonExit onClick={logoutPage}>выйти</ButtonExit>
             </PersonTitle>
             <ContentWrapper>
                 <ButtonWrapper>
-                    <ButtonSelect>персональные данные</ButtonSelect>
-                    <ButtonSelect>история заказов</ButtonSelect>
-                    <ButtonSelect>избранное</ButtonSelect>
-                    <ButtonSelect>настройки</ButtonSelect>
+                    <ButtonSelect onClick={() => setUser(` ${all.user.bio} - ${all.user.username}`)}>персональные данные</ButtonSelect>
+                    <ButtonSelect onClick={() => setUser(all.user.email)}>email</ButtonSelect>
+                    <ButtonSelect onClick={() => setUser(all.user.token)}>токен</ButtonSelect>
+                    <ButtonSelect onClick={() => setUser(all.user.image)}>image</ButtonSelect>
                 </ButtonWrapper>
                 <Content>
-                    Lorem ipsum dolor sit amet.
+                    {user}
                 </Content>
             </ContentWrapper>
         </PersonWrapper>

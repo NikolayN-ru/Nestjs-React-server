@@ -1,4 +1,4 @@
-import React, { createContext, FC } from 'react';
+import React, { createContext, FC, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Footer from './components/WrapperComponents/Footer/Footer';
@@ -15,25 +15,49 @@ import Cart from './pages/Cart/Cart';
 import Order from './pages/Order/Order';
 import Store from './store/store';
 
-interface IStore {
-  store: Store,
-}
+//new
+import { useAppDispatch, useAppSelector } from "./redux";
+import { getArticles } from "./redux/thunks/articles";
 
-const store = new Store();
+// interface IStore {
+//   store: Store,
+// }
 
-export const Context = createContext<IStore>({
-  store,
-});
+// const store = new Store();
+
+// export const Context = createContext<IStore>({
+//   store,
+// });
 
 
 const About = React.lazy(() => import('./pages/About/About'));
 
 
 const App: FC = () => {
+
+  const dispatch = useAppDispatch()
+
+  // useEffect(() => {
+  //   dispatch(getArticles(filters))
+  // }, [filters])
+
+  const {all} = useAppSelector(state => state.products)
+
+  useEffect(() => {
+    dispatch(getArticles())
+  }, [])
+
+
+  useEffect(() => {
+    console.log('Посты: ', all)
+  }, [all])
+
+  // console.log(all)
+
   return (
-    <Context.Provider value={{
-      store
-    }}>
+    // <Context.Provider value={{
+    //   store
+    // }}>
       <Router>
         <ExtraHeader />
         <Header />
@@ -55,7 +79,7 @@ const App: FC = () => {
         </Routes>
         <Footer />
       </Router>
-    </Context.Provider>
+    // </Context.Provider>
   );
 }
 

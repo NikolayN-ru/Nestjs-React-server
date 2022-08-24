@@ -7,6 +7,7 @@ import { CartIcon } from './Cart';
 import { BooleanLocale } from 'yup/lib/locale';
 import { Link } from 'react-router-dom';
 import PopupLogin from '../PopupLogin/PopupLogin';
+import { useAppSelector } from '../../redux';
 
 
 const CartIcoTotalNUmber: number = 2;
@@ -22,11 +23,13 @@ const Icons: FC = () => {
     const [cartState, setCartState] = useToggle(false);
     const [popup, setPopup] = useState(false);
 
+    const { all } = useAppSelector(state => state.user)
+
     return (
         <IconsWrapper>
             <CartIcoWrapper onMouseEnter={setCartState} onMouseLeave={setCartState}>
                 <Link to={'/cart'}>
-                <CartIcon isHover={cartState} />
+                    <CartIcon isHover={cartState} />
                 </Link>
                 <CartIcoTotal>
                     {CartIcoTotalNUmber}
@@ -53,17 +56,29 @@ const Icons: FC = () => {
                             Login /
                         </Link>
                     </UserIcomenuText>
-                    <UserIcomenuText onClick={() => {setPopup((prev:boolean) => (!prev))}}>
+                    <UserIcomenuText onClick={() => { setPopup((prev: boolean) => (!prev)) }}
+
+                    >
                         {/* <div > */}
-                            / signUp
+                        /  ВХОД
                         {/* </div> */}
                     </UserIcomenuText>
                 </UserIcomenu>
             </UserIco>
             {
-                popup && <PopupLogin />
+                popup && <PopupLogin
+                    closePopup={() => setPopup(false)}
+                // togglePopup={setPopup}
+                />
+            }
+
+            {
+                all.user && <p>hello-{all.user.username} - <Link to='/login'>Login</Link></p>
             }
         </IconsWrapper>
     )
 }
 export default Icons;
+
+
+// за иконками

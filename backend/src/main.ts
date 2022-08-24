@@ -13,6 +13,7 @@ const start = async () => {
         const app = await NestFactory.create(AppModule);
         // app.use(morgan('combined', { stream: 'accessLogStream' }));
         app.enableCors();
+        // app.setGlobalPrefix('api');
         await app.listen(PORT, () => console.log(PORT, () => console.log(`server started on PORT ${PORT}`)));
     } catch (e) { }
 }
