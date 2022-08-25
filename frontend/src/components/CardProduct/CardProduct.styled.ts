@@ -44,6 +44,8 @@ export const ItemPrice = styled('p')`
 
 export const ItemImage = styled('img')`
 & {
+    width: 200px;
+    height: 200px;
     /* src: "image.png"; */
 }
 `

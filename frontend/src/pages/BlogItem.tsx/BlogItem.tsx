@@ -18,7 +18,7 @@ const Blog: FC = () => {
     //   dispatch(getArticles(filters))
     // }, [filters])
 
-    const { all } = useAppSelector(state => state.posts)
+    const { all } = useAppSelector(state => state.products)
 
     useEffect(() => {
         dispatch(getArticles())

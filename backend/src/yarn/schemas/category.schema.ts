@@ -8,6 +8,8 @@ export type CategoryYarnDocument = CategoryYarn & Document;
 @Schema()
 export class CategoryYarn {
 
+    
+
     @Prop()
     title: string;
 

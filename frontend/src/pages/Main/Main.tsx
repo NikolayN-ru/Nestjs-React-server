@@ -1,8 +1,10 @@
-import React, { FC } from "react"
+import React, { FC, useEffect } from "react"
 import BreadCamps from "../../components/BreadCamps/BreadCamps";
 import FilterBlock from "../../components/FilterBlock/FilterBlock";
 import CardItems from "../../components/CardItems/CardItems";
 import { MainContent, MainWrapper } from "./Main.styled";
+import { getProducts } from "../../redux/thunks/products";
+import { useAppDispatch } from "../../redux";
 
 const STATE_METR = ["50-100", "100-150", "150-200", "250-300", "свыше 300"]
 // [{id:1, name:'50-100'},]
@@ -17,6 +19,7 @@ const DATA = [
 ]
 
 const Main: FC = () => {
+
     return (
         <MainWrapper>
             <FilterBlock localData={DATA} />

@@ -22,8 +22,8 @@ export const getArticles = createAsyncThunk<Array<PostItem>, void, { rejectValue
 
         // const posts = await api.get<Array<PostItem>>('/posts', {
         const posts = await api.patch<Array<PostItem>>('/articles/all', {
-            data: {},
-            headers: {}
+            data: { },
+            headers: { }
         })
 
         if (posts.status >= 400) {

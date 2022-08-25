@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import mongoose, { Document } from 'mongoose';
 import { CategoryYarn } from "./category.schema";
+import { TagsYarn } from "./tags.schemas";
 import { VariablesYarn } from "./variables.schema";
 
 
@@ -11,8 +12,23 @@ export class ProductYarn {
     @Prop()
     name: string;
 
-    @Prop({ type: { type: mongoose.Schema.Types.ObjectId, ref: 'CategorYarn'}})
-    category: CategoryYarn;
+    @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'CategorYarn' }] })
+    category: CategoryYarn[];
+
+    @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'TagsYarn' }] })
+    tags: TagsYarn[];
+
+    @Prop()
+    length: number;
+
+    @Prop()
+    weight: string;
+
+    @Prop()
+    needles: string[];
+
+    @Prop()
+    country: string;
 
     @Prop()
     description: string;
@@ -27,9 +43,9 @@ export class ProductYarn {
     image: string;
 
     @Prop()
-    extraVariables: [{number: number, color: string, count: number, price: number, image: string;}]
+    extraVariables: [{ number: number, color: string, count: number, price: number, image: string; }]
 
-    @Prop( {type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'VariablesYarn'}] })
+    @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'VariablesYarn' }] })
     variables: VariablesYarn[];
 
 }

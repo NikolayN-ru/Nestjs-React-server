@@ -1,17 +1,22 @@
 import { FileService, FileType } from '@app/file/file.service';
+import { Product } from '@app/products/schemas/product.schema';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateCategoryYarnDto } from './dto/create-categoryYarn.dto';
+import { CreateTagYarnDto } from './dto/create-tagYarn.dto';
 import { CreateProductYarnDto } from './dto/crerate-productYarn.dto';
 import { CategoryYarn, CategoryYarnDocument } from './schemas/category.schema';
 import { ProductYarn, ProductYarnDocument } from './schemas/product.scema';
+import { TagsYarn, TagsYarnDocument } from './schemas/tags.schemas';
 
 @Injectable()
 export class YarnService {
+
     constructor(
         @InjectModel(CategoryYarn.name) private categoryYarnModel: Model<CategoryYarnDocument>,
         @InjectModel(ProductYarn.name) private productYarnModel: Model<ProductYarnDocument>,
+        @InjectModel(TagsYarn.name) private tagYarnModel: Model<TagsYarnDocument>,
         private fileService: FileService) { }
 
     async createCategory(dto: CreateCategoryYarnDto): Promise<CategoryYarn> {
@@ -21,21 +26,42 @@ export class YarnService {
     }
 
     async getAllCategory() {
-        const allcategory = await this.categoryYarnModel.find();
+        const allcategory = await this.categoryYarnModel.find().populate('products');
         return allcategory;
     }
 
-    async createProduct(dto: CreateProductYarnDto): Promise<ProductYarn> {
-        const product = await this.productYarnModel.create(dto);
+    async createProduct(dto: CreateProductYarnDto, picture): Promise<ProductYarn> {
+
+        const picturePath = this.fileService.createFile(FileType.IMAGE, picture);
+
+        const product = await this.productYarnModel.create({ ...dto, image: picturePath });
+        const tag = await this.tagYarnModel.find({ title: dto.tagsA })
+        product.tags.push(tag[0]._id);
+        const category = await this.categoryYarnModel.find({ title: dto.categoryA });
+        product.category.push(category[0]._id);
+        await product.save();
+        category[0].products.push(product);
+        await category[0].save();
         return product;
     }
 
     async getAllProductYarn() {
-        const allProduct = await this.productYarnModel.find({
-            where: {
-                category: '630657aae12f81e79af17ca2'
-            }
-        });
+        const allProduct = await this.productYarnModel.find().populate('tags');
         return allProduct;
+    }
+
+    async createTag(dto: CreateTagYarnDto) {
+        const tag = await this.tagYarnModel.create(dto);
+        return tag;
+    }
+
+    async getProductById(id: string): Promise<any> {
+        const product = await this.productYarnModel.find({ name: id });
+        return product[0];
+    }
+
+    async allTags(){
+        const allTags = await this.tagYarnModel.find()
+        return allTags;
     }
 }

@@ -16,7 +16,7 @@ const Blog: FC = () => {
     //   dispatch(getArticles(filters))
     // }, [filters])
 
-    const { all } = useAppSelector(state => state.posts)
+    const { all } = useAppSelector(state => state.products)
 
     useEffect(() => {
         dispatch(getArticles())
@@ -43,7 +43,7 @@ const Blog: FC = () => {
             </BlogFilter>
             <BlogPost />
             <hr />
-            {all.map((item, key) => <p>{item.id} = {item.title} <Link to={`/blog-item/${item.slug}`}>{item.slug}</Link> </p>)}
+            {/* {all.map((item, key) => <p>{item.id} = {item.title} <Link to={`/blog-item/${item.slug}`}>{item.slug}</Link> </p>)} */}
         </BlogWrapper>
     )
 }

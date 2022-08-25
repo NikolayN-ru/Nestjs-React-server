@@ -17,7 +17,7 @@ import Store from './store/store';
 
 //new
 import { useAppDispatch, useAppSelector } from "./redux";
-import { getArticles } from "./redux/thunks/articles";
+import { getProducts } from "./redux/thunks/products";
 import BlogItem from './pages/BlogItem.tsx/BlogItem';
 
 // interface IStore {
@@ -36,29 +36,24 @@ const About = React.lazy(() => import('./pages/About/About'));
 
 const App: FC = () => {
 
-  const dispatch = useAppDispatch()
+  // const dispatch = useAppDispatch()
+
+  // // useEffect(() => {
+  // //   dispatch(getProducts(filters))
+  // // }, [filters])
+
+  // const { all } = useAppSelector(state => state.products)
 
   // useEffect(() => {
-  //   dispatch(getArticles(filters))
-  // }, [filters])
-
-  const { all } = useAppSelector(state => state.posts)
-
-  useEffect(() => {
-    dispatch(getArticles())
-  }, [])
+  //   dispatch(getProducts())
+  // }, [])
 
 
-  useEffect(() => {
-    console.log('Посты: ', all)
-  }, [all])
-
-  // console.log(all)
+  // useEffect(() => {
+  //   console.log('продукты: ', all)
+  // }, [all])
 
   return (
-    // <Context.Provider value={{
-    //   store
-    // }}>
     <Router>
       <ExtraHeader />
       <Header />
@@ -81,7 +76,6 @@ const App: FC = () => {
       </Routes>
       <Footer />
     </Router>
-    // </Context.Provider>
   );
 }
 

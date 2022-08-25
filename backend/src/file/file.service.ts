@@ -26,7 +26,5 @@ export class FileService {
         }
     }
 
-    removeFile(fileName: string) {
-
-    }
+    removeFile(fileName: string) { }
 }
