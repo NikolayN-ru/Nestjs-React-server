@@ -1,6 +1,6 @@
-import { ProductItemReducer } from './reducers/productItemReducer/productItemReducer';
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { ProductItemReducer } from './reducers/productItemReducer/productItemReducer';
 import { ProductsReducer } from "./reducers/productsReducer/productsReducer";
 import { TagsReducer } from "./reducers/tagReducer/tagReducer";
 import { UserReducer } from "./reducers/userReducer/userReducer";

@@ -28,7 +28,7 @@ export const getProductItem = createAsyncThunk<Array<ProductItemMain>, string | 
 
         if (product.status >= 400) {
             return thunkApi.rejectWithValue({
-                message: 'Не удалось подключиться к серверу'
+                message: 'Не удалось получить товар'
             })
         }   
 

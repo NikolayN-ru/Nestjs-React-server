@@ -24,7 +24,6 @@ export interface ProductItem {
 //3 параметр - типизация thunkApi
 export const getProducts = createAsyncThunk<Array<ProductItem>, void, { rejectValue: { message: string } }>(
     'get/products',
-    // payloadCreator,
     async (_, thunkApi) => {
         const posts = await api.get<Array<ProductItem>>('/yarn/product', {
             data: { },
@@ -33,7 +32,7 @@ export const getProducts = createAsyncThunk<Array<ProductItem>, void, { rejectVa
 
         if (posts.status >= 400) {
             return thunkApi.rejectWithValue({
-                message: 'Не удалось подключиться к серверу'
+                message: 'Не удалось получить список товарорв'
             })
         }
 
