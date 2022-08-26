@@ -29,6 +29,7 @@ import { getProducts, ProductItem } from "../../thunks/products";
 					state.all = action.payload
 				}
 			)
+			
  	}
  })
 

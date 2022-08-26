@@ -16,6 +16,7 @@ import { ArticleModule } from "./article/article.module";
 import { TelegramModule } from './telegram/telegram.module';
 import { Auth2Module } from './auth2/auth2.module';
 import { YarnModule } from './yarn/yarn.module';
+import { NeedlesModule } from './needles/needles.module';
 
 @Module({
     imports: [
@@ -32,7 +33,8 @@ import { YarnModule } from './yarn/yarn.module';
         ArticleModule,
         TelegramModule,
         Auth2Module,
-        YarnModule
+        YarnModule,
+        NeedlesModule
     ],
     controllers: [AppController],
     providers: [AppService]

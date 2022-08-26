@@ -78,3 +78,16 @@ export const ButtonExit = styled('button')`
     opacity: 0.4;
 }
 `
+export const ButtonAddProduct = styled('button')`
+& {
+    width: 150px;
+    height: 30px;
+    margin: 10px;
+    color: #fff;
+    border: none;
+    background-color: tomato;
+    position: relative;
+    left: 200px;
+    cursor: pointer;
+}
+`

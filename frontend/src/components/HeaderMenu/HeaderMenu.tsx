@@ -15,6 +15,7 @@ const stateItems: ReadonlyArray<Omit<stateItemsInterface, "pk">> = [
     { title: 'пряжа', link: 'yarn' },
     { title: 'спицы', link: 'needles' },
     { title: 'изделия', link: 'product' },
+    { title: 'МК', link: 'master' },
     { title: 'блог', link: 'blog' },
     { title: 'о нас', link: 'about' },
 ]

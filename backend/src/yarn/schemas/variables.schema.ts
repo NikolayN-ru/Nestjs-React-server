@@ -6,7 +6,7 @@ export type VariablesYarnDocument = VariablesYarn & Document;
 @Schema()
 export class VariablesYarn {
     @Prop()
-    number: number
+    number: string // 0020 !
 
     @Prop()
     color: string
@@ -14,8 +14,8 @@ export class VariablesYarn {
     @Prop()
     count: number
 
-    @Prop()
-    price: number
+    // @Prop()
+    // price: number
 
     @Prop()
     image: string;

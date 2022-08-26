@@ -19,6 +19,9 @@ import Store from './store/store';
 import { useAppDispatch, useAppSelector } from "./redux";
 import { getProducts } from "./redux/thunks/products";
 import BlogItem from './pages/BlogItem.tsx/BlogItem';
+import AddProduct from './pages/AddProduct/AddProduct';
+import Master from './pages/Master/Master';
+import UpdateProduct from './pages/UpdateProduct/UpdateProduct';
 
 // interface IStore {
 //   store: Store,
@@ -64,15 +67,18 @@ const App: FC = () => {
           </React.Suspense>
         } />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/master" element={<Master />} />
         <Route path="/blog-item/:slugItem" element={<BlogItem />} />
         <Route path="/yarn" element={<Main />} />
+        <Route path="/" element={<Main />} />
         <Route path="/needles" element={<Needles />} />
         <Route path="/product" element={<Wares />} />
-        <Route path="/" element={<Main />} />
         <Route path="/item/:itemId" element={<Product />} />
         <Route path="/login" element={<Person />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/order" element={<Order />} />
+        <Route path="/login/addProduct" element={<AddProduct />} />
+        <Route path="/login/product/:itemId" element={<UpdateProduct />} />
       </Routes>
       <Footer />
     </Router>

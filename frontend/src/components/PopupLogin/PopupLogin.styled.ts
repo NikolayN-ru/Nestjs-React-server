@@ -22,7 +22,7 @@ export const PopupWrapper = styled('div')`
 }
 `
 
-export const ButtonClose = styled('div')`
+export const ButtonClose = styled('button')`
 & {
     position: absolute;
     background-color: red;
@@ -32,7 +32,7 @@ export const ButtonClose = styled('div')`
     z-index: 4;
     width: 30px;
     height: 30px;
-    color: red;
+    color: white;
 }
 `
 
@@ -49,5 +49,19 @@ export const Input = styled('input')`
     width: 290px;
     /* height: 30px; */
     /* color: red; */
+}
+`
+export const ButtonLogin = styled('button')`
+& {
+    width: 100px;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #fff;
+    color: blue;
+    cursor: pointer;
+}
+&:hover {
+    opacity: .7;
 }
 `

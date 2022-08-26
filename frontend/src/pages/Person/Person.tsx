@@ -1,11 +1,12 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux';
 import { logoutUser } from '../../redux/thunks/logout';
-import { ButtonExit, ButtonSelect, ButtonWrapper, Content, ContentWrapper, PersonTitle, PersonWrapper } from './Person.styled';
-import { useLocation } from 'react-router-dom';
+import { ButtonAddProduct, ButtonExit, ButtonSelect, ButtonWrapper, Content, ContentWrapper, PersonTitle, PersonWrapper } from './Person.styled';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { changeUser } from '../../redux/thunks/shangeUser';
 import { getTags, newTag } from '../../redux/thunks/tags';
+import ListProducts from '../../components/ListProducts/ListProducts';
 
 interface Iuser {
     id: number;
@@ -25,6 +26,7 @@ const Person: FC = () => {
     const { all } = useAppSelector(state => state.user);
     const { tags } = useAppSelector(state => state.tags);
     const dispatch = useAppDispatch();
+    let navigate = useNavigate();
 
     let location = useLocation();
     // console.log('let location = useLocation();', location)
@@ -33,6 +35,7 @@ const Person: FC = () => {
         // return <Redirect to='/'/>
         // <Redirect push to="/" />
         // history.push('/')
+        navigate("/")
     }
 
     const patchUser = () => {
@@ -54,93 +57,13 @@ const Person: FC = () => {
         <PersonWrapper>
             <PersonTitle>
                 Страница пользователя - {all.user.username}
+                <ButtonAddProduct>
+                    <Link to="/login/addProduct">добавить товар</Link>
+                </ButtonAddProduct>
                 <ButtonExit onClick={logoutPage}>выйти</ButtonExit>
+                {/* <ButtonExit onClick={logoutPage}></ButtonExit> */}
+
             </PersonTitle>
-            <div>
-                {tagLocal && <p>{tagLocal.map((item, key) => <p>{item.title}</p>)}</p>}
-                <input type="text" value={inputTag} onChange={e => setInputTag(e.target.value)} />
-                <button onClick={getTagsItems}>получить теги-состава</button>
-                <button onClick={newTagsItems}>добавление варианта состава</button>
-                <br />
-                <br />
-                <input type="text" />
-                <button>добавление варианта страны</button>
-                <br />
-                <br />
-                <input type="text" />
-                <button>добавление варианта категории-производитель</button>
-                <br />
-                <br />
-            </div>
-            <div>
-                <hr /><br />
-
-
-                <div style={{ 'display': 'flex', 'flexDirection': 'column' }}>
-                    <h1>Добавление товара !!!</h1>
-                    <hr />
-                    <div>
-                        <p>  categoryA</p>
-                        <input type="text" />
-                        <hr />
-                    </div>
-                    <div>
-                        <p> tagsA</p>
-                        <input type="text" />
-                        <hr />
-                    </div>
-                    <div>
-                        <p> length</p>
-                        <input type="text" />
-                        <hr />
-                    </div>
-                    <div>
-                        <p> weight</p>
-                        <input type="text" />
-                        <hr />
-                    </div>
-                    <div>
-                        <p> needles</p>
-                        <input type="text" />
-                        <hr />
-                    </div>
-                    <div>
-                        <p> country</p>
-                        <input type="text" />
-                        <hr />
-                    </div>
-                    <div>
-                        <p> description</p>
-                        <input type="text" />
-                        <hr />
-                    </div>
-                    <div>
-                        <p> price</p>
-                        <input type="text" />
-                        <hr />
-                    </div>
-                    <div>
-                        <p> discount</p>
-                        <input type="text" />
-                        <hr />
-                    </div>
-                    <div>
-                        <p> image</p>
-                        <input type="text" />
-                        <hr />
-                    </div>
-                    <div>
-                        <p> picture</p>
-                        <input type="file" />
-                        <hr />
-                    </div>
-                    <button>++added-product</button>
-                </div>
-
-                <br />
-                <br /><br />
-                <hr /><br />
-            </div>
             <ContentWrapper>
                 <ButtonWrapper>
                     <ButtonSelect onClick={() => setUser({ key: 'bio', value: all.user.bio })}>персональные данные</ButtonSelect>
@@ -156,6 +79,26 @@ const Person: FC = () => {
                     <button onClick={patchUser}>изменить</button>
                 </Content>
             </ContentWrapper>
+            <div>
+                <br />
+                <br />
+                <br />
+                {tagLocal && <p>{tagLocal.map((item, key) => <p>{item.title}</p>)}</p>}
+                <input type="text" value={inputTag} onChange={e => setInputTag(e.target.value)} />
+                <button onClick={getTagsItems}>получить теги-состава</button>
+                <button onClick={newTagsItems}>добавление варианта состава</button>
+                <br />
+                <br />
+                <input type="text" />
+                <button>добавление варианта страны</button>
+                <br />
+                <br />
+                <input type="text" />
+                <button>добавление варианта категории-производитель</button>
+                <br />
+                <br />
+            </div>
+            <ListProducts/>
         </PersonWrapper>
     )
 }

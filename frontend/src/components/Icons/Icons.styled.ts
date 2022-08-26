@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled, { keyframes, css } from 'styled-components';
 
 export const IconsWrapper = styled('div')`
@@ -98,3 +99,16 @@ export const UserIcomenuText = styled('span')`
 }
 `
 
+export const WrapperLogin = styled('div')`
+& {
+    /* background-color: white; */
+    padding-top: 10px;
+    color: white
+}
+`
+
+export const LinkWrapper = styled(Link)`
+& {
+    color: white
+}
+`

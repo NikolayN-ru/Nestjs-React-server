@@ -1,13 +1,13 @@
 import {createSlice, isAnyOf, PayloadAction} from "@reduxjs/toolkit";
-import { getProductItem, ProductItem } from "../../thunks/productItem";
+import { getProductItem } from "../../thunks/productItem";
 
 
  interface ProductItemState {
- 	item: any
+ 	item: any;
  }
 
  const initialState: ProductItemState = {
- 	item: []
+ 	item: {}
  }
 
  const ProductItemMain = createSlice({
@@ -18,7 +18,7 @@ import { getProductItem, ProductItem } from "../../thunks/productItem";
  		builder
 			 .addMatcher(
 				isAnyOf(getProductItem.fulfilled),
-				(state, action: PayloadAction<Array<ProductItem>>) => {
+				(state, action: PayloadAction<any>) => {
 					state.item = action.payload
 				}
 			)

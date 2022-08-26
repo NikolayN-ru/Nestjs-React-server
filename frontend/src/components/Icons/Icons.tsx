@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useState } from 'react';
-import { CartIcoTotal, CartIcoWrapper, IconsWrapper, UserIco, UserIcomenu, UserIcomenuText, IcoItem, CartList } from './Icons.styled';
+import { CartIcoTotal, CartIcoWrapper, IconsWrapper, UserIco, UserIcomenu, UserIcomenuText, IcoItem, CartList, WrapperLogin, LinkWrapper } from './Icons.styled';
 import cart from '../../assets/cart.svg';
 import notification from '../../assets/notification.svg';
 import user from '../../assets/user.svg';
@@ -20,14 +20,14 @@ const useToggle = (initialState: any) => {
 
 const Icons: FC = () => {
     const [isToggled, toggle] = useToggle(false);
-    const [cartState, setCartState] = useToggle(false);
+    const [cartState, setCartState] = useState(false);
     const [popup, setPopup] = useState(false);
 
-    const { all } = useAppSelector(state => state.user)
+    const { all } = useAppSelector(state => state.user);
 
     return (
         <IconsWrapper>
-            <CartIcoWrapper onMouseEnter={setCartState} onMouseLeave={setCartState}>
+            <CartIcoWrapper onMouseEnter={() => setCartState(true)} onMouseLeave={() => setCartState(false)}>
                 <Link to={'/cart'}>
                     <CartIcon isHover={cartState} />
                 </Link>
@@ -48,23 +48,7 @@ const Icons: FC = () => {
                 </CartList>
             </CartIcoWrapper>
             <IcoItem src={notification} />
-            <UserIco onMouseEnter={toggle} onMouseLeave={toggle}>
-                <IcoItem src={user} />
-                <UserIcomenu disp={isToggled}>
-                    <UserIcomenuText>
-                        <Link to='/login'>
-                            Login /
-                        </Link>
-                    </UserIcomenuText>
-                    <UserIcomenuText onClick={() => { setPopup((prev: boolean) => (!prev)) }}
 
-                    >
-                        {/* <div > */}
-                        /  ВХОД
-                        {/* </div> */}
-                    </UserIcomenuText>
-                </UserIcomenu>
-            </UserIco>
             {
                 popup && <PopupLogin
                     closePopup={() => setPopup(false)}
@@ -72,8 +56,22 @@ const Icons: FC = () => {
                 />
             }
 
-            {
-                all.user && <p>hello-{all.user.username} - <Link to='/login'>Login</Link></p>
+            {all.user ?
+                <WrapperLogin>hello-{all.user.username} - <LinkWrapper to='/login'>войти</LinkWrapper></WrapperLogin>
+                :
+                <UserIco onMouseEnter={toggle} onMouseLeave={toggle}>
+                    <IcoItem src={user} />
+                    <UserIcomenu disp={isToggled}>
+                        <UserIcomenuText>
+                            <Link to='/login'>
+                                Login /
+                            </Link>
+                        </UserIcomenuText>
+                        <UserIcomenuText onClick={() => { setPopup((prev: boolean) => (!prev)) }}>
+                            /  ВХОД
+                        </UserIcomenuText>
+                    </UserIcomenu>
+                </UserIco>
             }
         </IconsWrapper>
     )

@@ -1,3 +1,4 @@
+import finalPropsSelectorFactory from 'react-redux/es/connect/selectorFactory';
 import styled from 'styled-components';
 
 export const ItemWrapper = styled('div')`
@@ -114,3 +115,33 @@ export const ButtonInCart = styled('button')`
     color: #fff;
 }
 `
+
+interface props {
+    color: string;
+}
+
+export const Variations = styled('div')`
+& {
+    width: 100px;
+    display: flex;
+    margin-left: 30px;
+}
+`
+
+export const Variation = styled('div') <props>`
+& {
+    /* text-align: center; */
+    min-width: 30px;
+    height: 30px;
+    padding: 5px;
+    margin: 5px;
+    border: 5px solid #eee;
+    background-color: ${_ => _.color};
+    border-radius: 5px;
+    cursor: pointer;
+}
+&:hover {
+    opacity: .7;
+}
+`
+

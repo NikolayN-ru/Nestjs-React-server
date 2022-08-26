@@ -7,6 +7,14 @@ const Product = () => {
     return (
         <ProductWrapper>
             Wares - изделия
+            <hr />
+            <ul>
+                <li>палантины</li>
+                <li>свитера</li>
+                <li>шапки</li>
+                <li>перчатки</li>
+                <li>варежки</li>
+            </ul>
         </ProductWrapper>
     )
 }

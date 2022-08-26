@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { api } from "../../api/api";
 
 
-export interface ProductItem {
+export interface ProductItemMain {
     name: string;
     category: any,
     tags: any,
@@ -18,11 +18,11 @@ export interface ProductItem {
     variables: any,
 }
 
-export const getProductItem = createAsyncThunk<Array<ProductItem>, string | undefined, { rejectValue: { message: string } }>(
+export const getProductItem = createAsyncThunk<Array<ProductItemMain>, string | undefined, { rejectValue: { message: string } }>(
     'get/products',
     // payloadCreator,
     async (_, thunkApi) => {
-        const product:any = await api.get<Array<ProductItem>>(`/yarn/productItem/${_}`, {
+        const product:any = await api.get<ProductItemMain>(`/yarn/productItem/${_}`, {
 
         })
 
@@ -30,8 +30,7 @@ export const getProductItem = createAsyncThunk<Array<ProductItem>, string | unde
             return thunkApi.rejectWithValue({
                 message: 'Не удалось подключиться к серверу'
             })
-        }
-        console.log(product.data, 'productproductproductproduct')
+        }   
 
         return product.data;
     }
