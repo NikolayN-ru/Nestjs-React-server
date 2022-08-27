@@ -12,7 +12,7 @@ export class ProductYarn {
     @Prop()
     name: string;
 
-    @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'CategorYarn' }] })
+    @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'CategoryYarn' }] })
     category: CategoryYarn[];
 
     @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'TagsYarn' }] })

@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useState } from 'react';
-import { CartIcoTotal, CartIcoWrapper, IconsWrapper, UserIco, UserIcomenu, UserIcomenuText, IcoItem, CartList, WrapperLogin, LinkWrapper } from './Icons.styled';
+import { CartIcoTotal, CartIcoWrapper, IconsWrapper, UserIco, UserIcomenu, UserIcomenuText, IcoItem, CartList, WrapperLogin, LinkWrapper, MiniItem } from './Icons.styled';
 import cart from '../../assets/cart.svg';
 import notification from '../../assets/notification.svg';
 import user from '../../assets/user.svg';
@@ -10,7 +10,7 @@ import PopupLogin from '../PopupLogin/PopupLogin';
 import { useAppSelector } from '../../redux';
 
 
-const CartIcoTotalNUmber: number = 2;
+// const CartIcoTotalNUmber: number = 2;
 
 const useToggle = (initialState: any) => {
     const [isToggled, setIsToggled] = useState(initialState);
@@ -24,6 +24,7 @@ const Icons: FC = () => {
     const [popup, setPopup] = useState(false);
 
     const { all } = useAppSelector(state => state.user);
+    const { cart } = useAppSelector(state => state.cart);
 
     return (
         <IconsWrapper>
@@ -32,32 +33,25 @@ const Icons: FC = () => {
                     <CartIcon isHover={cartState} />
                 </Link>
                 <CartIcoTotal>
-                    {CartIcoTotalNUmber}
+                    {cart.length}
                 </CartIcoTotal>
                 <CartList disp={cartState}>
                     <hr />
-                    2 товара
+                    {cart && cart.length} товара в корзине
                     <hr />
-                    <div>
-                        1
-                    </div>
-                    <hr />
-                    <div>
-                        2
-                    </div>
+                    {cart && cart.map((item: any, id: number) => {
+                        return (
+                            <Link to={`item/${item.id}`}>
+                                <MiniItem key={id}>{item.name}- количество{item.quantity}</MiniItem>
+                            </Link>
+                        )
+                    })}
                 </CartList>
             </CartIcoWrapper>
             <IcoItem src={notification} />
-
-            {
-                popup && <PopupLogin
-                    closePopup={() => setPopup(false)}
-                // togglePopup={setPopup}
-                />
-            }
-
+            {popup && <PopupLogin closePopup={() => setPopup(false)} />}
             {all.user ?
-                <WrapperLogin>hello-{all.user.username} - <LinkWrapper to='/login'>войти</LinkWrapper></WrapperLogin>
+                <WrapperLogin><LinkWrapper to='/login'>Личный кабинет </LinkWrapper> .. {all.user.username}</WrapperLogin>
                 :
                 <UserIco onMouseEnter={toggle} onMouseLeave={toggle}>
                     <IcoItem src={user} />

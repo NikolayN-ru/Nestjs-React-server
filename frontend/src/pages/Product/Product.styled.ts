@@ -116,9 +116,7 @@ export const ButtonInCart = styled('button')`
 }
 `
 
-interface props {
-    color: string;
-}
+
 
 export const Variations = styled('div')`
 & {
@@ -128,17 +126,22 @@ export const Variations = styled('div')`
 }
 `
 
+interface props {
+    color: string;
+    activate?: boolean;
+}
+
 export const Variation = styled('div') <props>`
 & {
-    /* text-align: center; */
+    cursor: pointer;
     min-width: 30px;
     height: 30px;
     padding: 5px;
     margin: 5px;
-    border: 5px solid #eee;
-    background-color: ${_ => _.color};
     border-radius: 5px;
-    cursor: pointer;
+    background-color: ${_ => `#${_.color}`};
+    /* border: 5px solid #eee; */
+    border: ${_ => _.activate ? '1px solid black' : 'none'};
 }
 &:hover {
     opacity: .7;

@@ -1,10 +1,11 @@
-import { Body, Controller, Get, Param, Post, Req, UploadedFiles, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put, Req, UploadedFiles, UseInterceptors } from '@nestjs/common';
 import { CreateCategoryYarnDto } from './dto/create-categoryYarn.dto';
 import { CreateTagYarnDto } from './dto/create-tagYarn.dto';
 import { CreateProductYarnDto } from './dto/crerate-productYarn.dto';
 import { YarnService } from './yarn.service';
 import { FileFieldsInterceptor } from '@nestjs/platform-express';
 import { Request, Response } from 'express';
+import { UpdateExtraVariablesProductDto } from './dto/update-extraVariablesProduct.dto';
 
 @Controller('yarn')
 export class YarnController {
@@ -45,7 +46,12 @@ export class YarnController {
         return this.yarnService.getProductById(id)
     }
 
-
+    //!!! variable product! - update
+    @Put('product/:id')
+    updateVariableProduct(@Param('id') id: string, @Body() dto: UpdateExtraVariablesProductDto){
+        // console.log(dto, 'dto');
+        return this.yarnService.updateProduct(id, dto);
+    }
 
     @Post('tag')
     createTag(@UploadedFiles() files, @Body() dto: CreateTagYarnDto) {

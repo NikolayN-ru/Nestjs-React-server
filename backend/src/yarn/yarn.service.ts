@@ -50,6 +50,14 @@ export class YarnService {
         return allProduct;
     }
 
+    async updateProduct(id, dto) {
+        const product = await this.productYarnModel.find({ _id: id });
+        product[0].extraVariables.push(dto.extraVariables);
+        console.log('product!', product[0]);
+        await product[0].save();
+        return product;
+    }
+
     async createTag(dto: CreateTagYarnDto) {
         const tag = await this.tagYarnModel.create(dto);
         return tag;
@@ -57,10 +65,11 @@ export class YarnService {
 
     async getProductById(id: string): Promise<any> {
         const product = await this.productYarnModel.find({ name: id });
-        return product[0];
+        const productId = await this.productYarnModel.findById(product[0]._id).populate('category').populate('tags');
+        return productId;
     }
 
-    async allTags(){
+    async allTags() {
         const allTags = await this.tagYarnModel.find()
         return allTags;
     }

@@ -6,11 +6,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
- 
-make: *** No rule to make target `all'.  Stop.
 
-
-# Make data base, printed on Fri Aug 26 15:04:51 2022
+# Make data base, printed on Fri Aug 26 20:46:51 2022
 
 # Variables
 
@@ -29,7 +26,7 @@ CURDIR := /Users/nn/Desktop/try/LB1
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"ru","availableLanguages":{"*":"ru"},"_languagePackId":"e2673fac9b3b0beb38d486c37331d2f9.ru","_translationsConfigFile":"/Users/nn/Library/Application Support/Code/clp/e2673fac9b3b0beb38d486c37331d2f9.ru/tcf.json","_cacheRoot":"/Users/nn/Library/Application Support/Code/clp/e2673fac9b3b0beb38d486c37331d2f9.ru","_resolvedLanguagePackCoreLocation":"/Users/nn/Library/Application Support/Code/clp/e2673fac9b3b0beb38d486c37331d2f9.ru/6d9b74a70ca9c7733b29f0456fd8195364076dda","_corruptedFile":"/Users/nn/Library/Application Support/Code/clp/e2673fac9b3b0beb38d486c37331d2f9.ru/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"ru","availableLanguages":{"*":"ru"},"_languagePackId":"e2673fac9b3b0beb38d486c37331d2f9.ru","_translationsConfigFile":"/Users/nn/Library/Application Support/Code/clp/e2673fac9b3b0beb38d486c37331d2f9.ru/tcf.json","_cacheRoot":"/Users/nn/Library/Application Support/Code/clp/e2673fac9b3b0beb38d486c37331d2f9.ru","_resolvedLanguagePackCoreLocation":"/Users/nn/Library/Application Support/Code/clp/e2673fac9b3b0beb38d486c37331d2f9.ru/e4503b30fc78200f846c62cf8091b76ff5547662","_corruptedFile":"/Users/nn/Library/Application Support/Code/clp/e2673fac9b3b0beb38d486c37331d2f9.ru/corrupted.info","_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
 # makefile (from `Makefile', line 1)
@@ -61,7 +58,7 @@ HOME = /Users/nn
 # default
 MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
-VSCODE_CODE_CACHE_PATH = /Users/nn/Library/Application Support/Code/CachedData/6d9b74a70ca9c7733b29f0456fd8195364076dda
+VSCODE_CODE_CACHE_PATH = /Users/nn/Library/Application Support/Code/CachedData/e4503b30fc78200f846c62cf8091b76ff5547662
 # environment
 LOGNAME = nn
 # environment
@@ -101,7 +98,7 @@ TMPDIR = /var/folders/4k/fbfvz3pn589c39w1x3cfx_jr0000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/nn/Library/Application Support/Code/1.70.1-main.sock
+VSCODE_IPC_HOOK = /Users/nn/Library/Application Support/Code/1.70.2-main.sock
 # environment
 MallocNanoZone = 0
 # makefile
@@ -111,7 +108,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.12888737405.12888737411
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.12890631907.12890631913
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -141,7 +138,7 @@ MAKELEVEL := 0
 # environment
 CONDA_PREFIX = /Users/nn/opt/anaconda3
 # environment
-VSCODE_PID = 68651
+VSCODE_PID = 86647
 # environment
 _CE_CONDA = 
 # environment
@@ -182,7 +179,6 @@ all:
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
- 
 # Not a target:
 .SUFFIXES:
 #  Implicit rule search has not been done.
@@ -233,6 +229,8 @@ dev:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Fri Aug 26 15:04:51 2022
+# Finished Make data base on Fri Aug 26 20:46:51 2022
 
  
+make: *** No rule to make target `all'.  Stop.
+

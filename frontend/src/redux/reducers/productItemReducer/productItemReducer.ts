@@ -19,6 +19,7 @@ import { getProductItem } from "../../thunks/productItem";
 			 .addMatcher(
 				isAnyOf(getProductItem.fulfilled),
 				(state, action: PayloadAction<any>) => {
+					// console.log(state.item, 'stateProduct')
 					state.item = action.payload
 				}
 			)

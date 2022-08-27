@@ -4,7 +4,7 @@ export const CartWrapper = styled('div')`
 & {
     width: 100%;
     margin: 0 auto;
-    height: 500px;
+    /* height: 500px; */
     background-color: #eee;
     padding-top: 50px;
 }
@@ -25,6 +25,7 @@ export const CartItems = styled('div')`
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-bottom: 30px;
 }
 `
 
@@ -48,6 +49,7 @@ export const CartTotal = styled('div')`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-bottom: 30px;
 }
 `
 

@@ -31,7 +31,7 @@ export const getProductItem = createAsyncThunk<Array<ProductItemMain>, string | 
                 message: 'Не удалось получить товар'
             })
         }   
-
+        // console.log(product.data, '!!!!!!')
         return product.data;
     }
 )

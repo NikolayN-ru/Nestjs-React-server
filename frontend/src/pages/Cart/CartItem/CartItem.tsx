@@ -1,24 +1,32 @@
 import React, { FC } from "react"
 import { ButtonDelete, CartItemWrapper, ContentParagraph, ImgItem, WrapperContent } from "./CartItem.styled";
 import image2 from '../../../assets/image2.webp';
+import { Link } from "react-router-dom";
 
-const CartItem: FC = () => {
+const CartItem: FC<any> = ({ item }) => {
+
+    const DeleteItem = () => {
+
+    }
+
     return (
+        // <Link to={`item/${item.name}`}>
         <CartItemWrapper>
             <ImgItem src={image2} />
-            марка-наименование
+            {item.category}-{item.name}
             <WrapperContent>
                 <ContentParagraph>
                     количество:
                 </ContentParagraph>
-                1
+                {item.quantity}
             </WrapperContent>
             <WrapperContent>
                 <ContentParagraph>цена:</ContentParagraph>
-                555 р
+                {item.price} р
             </WrapperContent>
-            <ButtonDelete>убрать</ButtonDelete>
+            <ButtonDelete onClick={() => DeleteItem()}>убрать</ButtonDelete>
         </CartItemWrapper>
+        // </Link>
     )
 }
 export default CartItem;

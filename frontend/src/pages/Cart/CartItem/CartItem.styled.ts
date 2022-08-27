@@ -11,7 +11,11 @@ export const CartItemWrapper = styled('div')`
     align-items: center;
     justify-content: space-around;
 }
+&:hover{
+    box-shadow: -13px 0px 12px 0px rgba(54, 58, 69, 0.2);
+}
 `
+
 
 export const ImgItem = styled('img')`
 & {

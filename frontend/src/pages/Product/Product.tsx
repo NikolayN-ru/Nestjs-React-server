@@ -7,23 +7,26 @@ import image3 from '../../assets/image3.webp';
 import image4 from '../../assets/image4.webp';
 import { useAppDispatch, useAppSelector } from "../../redux";
 import { getProductItem } from "../../redux/thunks/productItem";
+import { setCartProduct } from "../../redux/thunks/setCartProduct";
 
 const variation = [
-    { number: '1234', color: '#36ee33f7', count: 13, image: 'path-image' },
-    { number: '3492', color: '#fdd718e0', count: 23, image: 'path-image' },
-    { number: '1023', color: '#1c22e1df', count: 40, image: 'path-image' },
-    { number: '1010', color: '#ee3342d1', count: 3, image: 'path-image' },
-    { number: '0020', color: '#e50d9df8', count: 8, image: 'path-image' },
-    { number: '0020', color: '#baef0cf8', count: 8, image: 'path-image' },
-    { number: '0020', color: '#10bfdef8', count: 8, image: 'path-image' },
+    { number: '1234', color: '36ee33f7', count: 13, image: 'path-image' },
+    { number: '3492', color: 'fdd718e0', count: 23, image: 'path-image' },
+    { number: '1023', color: '1c22e1df', count: 40, image: 'path-image' },
+    // { number: '1010', color: 'ee3342d1', count: 3, image: 'path-image' },
+    // { number: '0020', color: 'e50d9df8', count: 8, image: 'path-image' },
+    // { number: '0020', color: 'baef0cf8', count: 8, image: 'path-image' },
+    // { number: '0020', color: '10bfdef8', count: 8, image: 'path-image' },
 ]
 
 const Item: FC = () => {
     const [state, setState] = useState<string>(image);
+    const [activeProduct, setActiveProduct] = useState<any>(undefined);
+    const [count, setCount] = useState<number>(1);
     const { itemId } = useParams();
 
-    const dispatch = useAppDispatch()
-    const { item } = useAppSelector(state => state.productItem)
+    const dispatch = useAppDispatch();
+    const { item } = useAppSelector(state => state.productItem);
 
     useEffect(() => {
         dispatch(getProductItem(itemId));
@@ -33,8 +36,19 @@ const Item: FC = () => {
         setState(`http://localhost:5000/${item.image}`);
     }, [item])
 
+    const setProduct = (prod: any) => {
+        setActiveProduct({ title: item.name, count: prod.count, number: prod.number, color: prod.color, image: prod.image });
+        setCount(1);
+    }
+
+    const setCartItem = () => {
+        const candidate = { id: item._id, category: item.category[0].title, name: item.name, price: item.price, quantity: count, image: activeProduct.image }
+        dispatch(setCartProduct(candidate));
+    }
+
     return (
         <ItemWrapper>
+
             <PhotoWrapper>
                 <PhotoMainWrapper>
                     {/* <PhotoMain src={state} /> */}
@@ -65,12 +79,28 @@ const Item: FC = () => {
                     страна производитель: {item.country}
                 </DescriptionPrice>
                 <DescriptionPrice>
-                    фирма: {item.category}
+                    фирма:
+                    {/* {item.category[0] !== undefined && item.category[0].title} */}
+                </DescriptionPrice>
+                <DescriptionPrice>
+                    {activeProduct && `количество мотков: ${activeProduct.count} - шт.`}
                 </DescriptionPrice>
                 <Variations>
                     {variation.map((item, id) => <Variation key={id} color={item.color}></Variation>)}
+                    <hr />
+                    {item.extraVariables && item.extraVariables.map((i: any, id: number) => <Variation
+                        onClick={() => setProduct(i)}
+                        key={id}
+                        color={i.color}
+                        activate={activeProduct && (i.number == activeProduct.number) ? true : false}
+                    >
+                        {/* {activeProduct && console.log(i.number, activeProduct.number)} */}
+                        {i.number}</Variation>)}
                 </Variations>
-                <ButtonInCart>в корзину</ButtonInCart>
+                <button onClick={() => setCount(prev => prev + 1)}>+</button>
+                <span>{count}</span>
+                <button onClick={() => setCount(prev => prev - 1)}>-</button>
+                <ButtonInCart onClick={() => setCartItem()} disabled={activeProduct ? false : true}>в корзину</ButtonInCart>
             </DescriptionWrapper>
         </ItemWrapper>
     )

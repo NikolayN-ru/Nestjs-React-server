@@ -112,3 +112,16 @@ export const LinkWrapper = styled(Link)`
     color: white
 }
 `
+
+export const MiniItem = styled('div')`
+& {
+    width: 100%;
+    height: 50px;
+    padding-top: 20px;
+    margin-bottom: 10px;
+    color: #d44;
+}
+&:hover {
+    box-shadow: 20px 20px 90px rgba(68, 68, 68, 0.15);
+}
+`

@@ -1,3 +1,4 @@
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/nn/Desktop/try/LB1'
 docker-compose up --build
 make: Leaving directory `/Users/nn/Desktop/try/LB1'
