@@ -1,4 +1,4 @@
-import { FileService } from '@app/file/file.service';
+import { FileService } from '../file/file.service';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CategoryYarn, CaterogyYarnSchema } from './schemas/category.schema';

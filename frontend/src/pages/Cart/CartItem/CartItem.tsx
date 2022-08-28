@@ -12,7 +12,7 @@ const CartItem: FC<any> = ({ item }) => {
     return (
         // <Link to={`item/${item.name}`}>
         <CartItemWrapper>
-            <ImgItem src={image2} />
+            <ImgItem src={`http://localhost:5000/${item.image}`} />
             {item.category}-{item.name}
             <WrapperContent>
                 <ContentParagraph>

@@ -1,4 +1,5 @@
-import { UserEntity } from "src/user/user.entity";
+// import { UserEntity } from "src/user/user.entity";
+import { UserEntity } from "../../src/user/user.entity";
 import { Entity, PrimaryGeneratedColumn, Column, BeforeUpdate, ManyToOne } from "typeorm";
 
 @Entity({ name: "articles" })

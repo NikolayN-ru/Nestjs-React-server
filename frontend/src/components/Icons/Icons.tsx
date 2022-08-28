@@ -41,9 +41,11 @@ const Icons: FC = () => {
                     <hr />
                     {cart && cart.map((item: any, id: number) => {
                         return (
-                            <Link to={`item/${item.id}`}>
-                                <MiniItem key={id}>{item.name}- количество{item.quantity}</MiniItem>
-                            </Link>
+                            <div key={id}>
+                                <Link to={`item/${item.id}`}>
+                                    <MiniItem >{item.name}- количество{item.quantity}</MiniItem>
+                                </Link>
+                            </div>
                         )
                     })}
                 </CartList>

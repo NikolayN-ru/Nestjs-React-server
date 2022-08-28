@@ -141,10 +141,39 @@ export const Variation = styled('div') <props>`
     border-radius: 5px;
     background-color: ${_ => `#${_.color}`};
     /* border: 5px solid #eee; */
-    border: ${_ => _.activate ? '1px solid black' : 'none'};
+    border: ${_ => _.activate ? '2px solid #b25fd9' : 'none'};
 }
 &:hover {
     opacity: .7;
 }
 `
+export const BlockCount = styled('div')`
+& {
+    display: flex;
 
+    padding-left: 100px;
+}
+`
+
+export const NumberCount = styled('div')`
+& {
+    margin: 20px;
+    margin-top: 10px;
+    font-size: 30px;
+    color: #b25fd9;
+}
+`
+
+export const ButtonInc = styled('button')`
+&{
+    width: 50px;
+    height: 50px;
+    background-color: #eee;
+    color: #b25fd9;
+    border: none;
+    font-size: 30px;
+}
+&:hover {
+    border: 2px solid #ddd;
+}
+`

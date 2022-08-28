@@ -29,28 +29,29 @@ export class YarnController {
         { name: 'picture', maxCount: 1 },
     ]))
     createProduct(
-        // @Req() req:Request,
         @UploadedFiles() files, @Body() dto: CreateProductYarnDto) {
-        // console.log(req)
         const { picture } = files;
         return this.yarnService.createProduct(dto, picture[0]);
     }
-
+    
     @Get('product')
     getAllProductYarn() {
         return this.yarnService.getAllProductYarn()
     }
-
+    
     @Get('productItem/:id')
     getProductById(@Param('id') id: string) {
         return this.yarnService.getProductById(id)
     }
-
-    //!!! variable product! - update
-    @Put('product/:id')
-    updateVariableProduct(@Param('id') id: string, @Body() dto: UpdateExtraVariablesProductDto){
-        // console.log(dto, 'dto');
-        return this.yarnService.updateProduct(id, dto);
+    
+    // updateVariableProduct(@Param('id') id: string, @Body() dto: UpdateExtraVariablesProductDto){
+        //!!! variable product! - update
+        @Put('product/:id')
+        @UseInterceptors(FileFieldsInterceptor([{ name: 'picture', maxCount: 1 }]))
+        updateVariableProduct(@UploadedFiles() files, @Body() dto: any, @Param('id') id: string){
+        const { picture } = files;
+        // console.log(dto, 'dto', picture, id);
+        return this.yarnService.updateProduct(id, dto, picture[0]);
     }
 
     @Post('tag')

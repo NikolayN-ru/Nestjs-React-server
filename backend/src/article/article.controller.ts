@@ -1,8 +1,8 @@
 import { CreateArticleDto } from './createArticle.dto';
 import { Body, Controller, Delete, Get, Param, Patch, Post, Put, UseGuards, UsePipes, ValidationPipe } from "@nestjs/common";
-import { User } from "src/user/decorators/user.decorator";
-import { AuthGuard } from "src/user/guards/auth.guard";
-import { UserEntity } from "src/user/user.entity";
+import { User } from "../../src/user/decorators/user.decorator";
+import { AuthGuard } from "../../src/user/guards/auth.guard";
+import { UserEntity } from "../../src/user/user.entity";
 import { ArticleService } from "./article.service";
 import { ArticleResponseInterface } from './types/articleResponse.interface';
 import { ArticleEntity } from './article.entity';

@@ -1,4 +1,4 @@
-import { FileService, FileType } from '@app/file/file.service';
+import { FileService, FileType } from '../file/file.service';
 import { Product } from '@app/products/schemas/product.schema';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
@@ -49,11 +49,13 @@ export class YarnService {
         const allProduct = await this.productYarnModel.find().populate('tags');
         return allProduct;
     }
-
-    async updateProduct(id, dto) {
+    //!!! variable product! - update
+    async updateProduct(id, dto, picture) {
+        const picturePath = this.fileService.createFile(FileType.IMAGE, picture);
+        // console.log(picturePath, 'picturePath');
         const product = await this.productYarnModel.find({ _id: id });
-        product[0].extraVariables.push(dto.extraVariables);
-        console.log('product!', product[0]);
+        product[0].extraVariables.push({ ...dto, image: picturePath});
+        // console.log(dto);
         await product[0].save();
         return product;
     }
