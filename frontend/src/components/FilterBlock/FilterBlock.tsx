@@ -15,8 +15,9 @@ const FilterBlock: FC<any> = ({ localData }) => {
                 <Input placeholder="от" />
                 <Input placeholder="до" />
             </FilterCoast>
-            <FilterItem localState={localData[0]} header={localData[2][0]} />
-            <FilterItem localState={localData[1]} header={localData[2][1]} />
+            <FilterItem localState={localData[0]} header={localData[3][0]} />
+            <FilterItem localState={localData[1]} header={localData[3][1]} />
+            <FilterItem localState={localData[2]} header={localData[3][2]} />
         </FilterBlockWrapper>
     )
 }

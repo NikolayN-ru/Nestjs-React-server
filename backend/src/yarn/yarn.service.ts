@@ -59,6 +59,10 @@ export class YarnService {
         await product[0].save();
         return product;
     }
+    
+    // update product
+    // вернет новый объект уже обновленный !!!
+    // return this.productYarnModel.findByIdAndUpdate(id, dto, { new: true }).exec();
 
     async createTag(dto: CreateTagYarnDto) {
         const tag = await this.tagYarnModel.create(dto);

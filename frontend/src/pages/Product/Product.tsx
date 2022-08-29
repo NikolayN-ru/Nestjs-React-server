@@ -92,7 +92,7 @@ const Item: FC = () => {
                     {activeProduct && `количество мотков: ${activeProduct.count} - шт.`}
                 </DescriptionPrice>
                 <Variations>
-                    {variation.map((item, id) => <Variation key={id} color={item.color}></Variation>)}
+                    {/* {variation.map((item, id) => <Variation key={id} color={item.color}></Variation>)} */}
                     <hr />
                     {item.extraVariables && item.extraVariables.map((i: any, id: number) => <Variation
                         onClick={() => setProduct(i)}

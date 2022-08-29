@@ -25,31 +25,31 @@ const AddProduct: FC = () => {
                 name
             </BlockInputs>
             <BlockInputs>
-                <InputAddProduct placeholder="name" />
+                <InputAddProduct placeholder="categoryA" />
                 categoryA
             </BlockInputs>
             <BlockInputs>
-                <InputAddProduct placeholder="name" />
+                <InputAddProduct placeholder="tagsA" />
                 tagsA
             </BlockInputs>
             <BlockInputs>
-                <InputAddProduct placeholder="name" />
+                <InputAddProduct placeholder="length" />
                 length
             </BlockInputs>
             <BlockInputs>
-                <InputAddProduct placeholder="name" />
+                <InputAddProduct placeholder="weight" />
                 weight
             </BlockInputs>
             <BlockInputs>
-                <InputAddProduct placeholder="name" />
+                <InputAddProduct placeholder="country" />
                 country
             </BlockInputs>
             <BlockInputs>
-                <InputAddProduct placeholder="name" />
+                <InputAddProduct placeholder="price" />
                 price
             </BlockInputs>
             <BlockInputs>
-                <InputAddProduct placeholder="name" type="file" />
+                <InputAddProduct placeholder="picture" type="file" />
                 picture
             </BlockInputs>
             <ButtonSubmit onClick={() => { }}>добавить товар</ButtonSubmit>

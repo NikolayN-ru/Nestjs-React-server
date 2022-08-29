@@ -9,11 +9,13 @@ const Needles: FC = () => {
 
     const material = ["съемные", "круговые", "чулочные", "прямые"]
     const mark = ["Addi", "KnitPro", "ChiaoGoo"]
+    const stuff = ["металл", "дерево", "карбон", "пластик"]
 
     const data = [
         material,
         mark,
-        [' тип', 'марка']
+        stuff,
+        ['тип', 'марка', 'материал']
     ]
 
     return (

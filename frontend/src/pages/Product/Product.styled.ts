@@ -141,7 +141,7 @@ export const Variation = styled('div') <props>`
     border-radius: 5px;
     background-color: ${_ => `#${_.color}`};
     /* border: 5px solid #eee; */
-    border: ${_ => _.activate ? '2px solid #b25fd9' : 'none'};
+    border: ${_ => _.activate ? '3px solid #b25fd9' : 'none'};
 }
 &:hover {
     opacity: .7;
