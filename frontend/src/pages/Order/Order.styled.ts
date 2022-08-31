@@ -51,17 +51,26 @@ export const WrapperSelect = styled('div')`
 }
 `
 
-export const Select = styled('div')`
+interface selectLink {
+    active: boolean;
+}
+
+export const Select = styled('div') <selectLink>`
 &{
     margin: 40px;
     width: 270px;
-    height: 130px;
+    height: 50px;
     background-color: #fff;
-    border: 1.5px solid #fff;
+    border: ${_ => _.active ? '3px solid red' : '3px solid #fff'};
     padding: 20px;
+    font-size: 20px;
+    padding-top: 20px;
+    color: ${_ => _.active ? '#856363' : '#bababa'};
+    cursor: pointer;
+
 }
 &:hover {
-    border: 1.5px solid #E30016;
+    border: 3px solid #E39916;
 }
 `
 

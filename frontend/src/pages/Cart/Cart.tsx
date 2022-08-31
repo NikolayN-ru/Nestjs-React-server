@@ -6,7 +6,6 @@ import CartItem from "./CartItem/CartItem";
 
 const Cart: FC = () => {
     const [total, setTotal] = useState<any>(0);
-
     const dispatch = useAppDispatch();
     const { cart } = useAppSelector(state => state.cart);
 
@@ -25,8 +24,7 @@ const Cart: FC = () => {
             </Title>
             <CartItemsWrapper>
                 <CartItems>
-                    {cart.length ? cart.map((item: any) => <CartItem item={item}/>) : <p>нет товаров в корзине</p >}
-                    {/* <CartItem /> */}
+                    {cart.length ? cart.map((item: any) => <CartItem item={item} />) : <p>нет товаров в корзине</p >}
                 </CartItems>
                 <CartTotal>
                     <p>
