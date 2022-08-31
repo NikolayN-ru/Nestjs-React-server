@@ -10,7 +10,8 @@ import image3 from '../../assets/image3.webp';
 import image4 from '../../assets/image4.webp';
 import { useAppDispatch, useAppSelector } from "../../redux";
 import { getProductItem } from "../../redux/thunks/productItem";
-import { setCartProduct } from "../../redux/thunks/setCartProduct";
+import { setCartProduct } from "../../redux/reducers/cartReducer/cartReducer";
+// import { setCartProduct } from "../../redux/thunks/setCartProduct";
 
 const variation = [
     { number: '1234', color: '36ee33f7', count: 13, image: 'path-image' },
@@ -45,7 +46,7 @@ const Item: FC = () => {
     const setCartItem = () => {
         const candidate = {
             id: item._id, category: item.category[0].title,
-            name: item.name, price: item.price, quantity: count, image: activeProduct.image
+            name: item.name, price: item.price, quantity: count, image: activeProduct.image, color: activeProduct.color
         }
         dispatch(setCartProduct(candidate));
     }

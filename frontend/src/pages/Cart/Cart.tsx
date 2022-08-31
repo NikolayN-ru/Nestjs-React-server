@@ -25,7 +25,7 @@ const Cart: FC = () => {
             </Title>
             <CartItemsWrapper>
                 <CartItems>
-                    {cart.length ? cart.map((item: any) => <CartItem item={item} />) : <p>нет товаров в корзине</p>}
+                    {cart.length ? cart.map((item: any) => <CartItem item={item}/>) : <p>нет товаров в корзине</p >}
                     {/* <CartItem /> */}
                 </CartItems>
                 <CartTotal>

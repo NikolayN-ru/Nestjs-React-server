@@ -18,8 +18,11 @@ export interface ProductItemMain {
     variables: any,
 }
 
+//todo ПЕРЕОПРЕДЕЛИТЬ ИНТЕРФЕЙС уже создан в другом файле
+// !!!! asdasd
+
 export const getProductItem = createAsyncThunk<Array<ProductItemMain>, string | undefined, { rejectValue: { message: string } }>(
-    'get/products',
+    'get/productItem',
     // payloadCreator,
     async (_, thunkApi) => {
         const product:any = await api.get<ProductItemMain>(`/yarn/productItem/${_}`, {

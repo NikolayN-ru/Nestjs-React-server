@@ -6,6 +6,7 @@ export const InputPanelWrapper = styled('div')`
     /* height: 30px; */
     border: 1px solid #fff;
     border-radius: 5px;
+    position: relative;
 }
 `
 
@@ -32,3 +33,15 @@ export const Input = styled('input')`
 }
 `
 
+export const SeachPanel = styled('div')`
+& {
+    position: absolute;
+    bottom: -40px;
+    right: -5%;
+    width: 230px;
+    background-color: #ddd;
+    color: black;
+    padding:10px;
+    z-index: 10;
+}
+`

@@ -1,4 +1,4 @@
-import {createSlice, isAnyOf, PayloadAction} from "@reduxjs/toolkit";
+import {createSlice, isAnyOf, PayloadAction, Slice} from "@reduxjs/toolkit";
 import { getProducts, ProductItem } from "../../thunks/products";
 
 
@@ -11,18 +11,19 @@ import { getProducts, ProductItem } from "../../thunks/products";
  }
 
 
- const Products = createSlice({
+ const Products: Slice<ProductsState, any, any> = createSlice({
  	name: 'products',
  	initialState,
- 	reducers: { },
+ 	reducers: { 
+		filterProducts(state:any, { payload }: PayloadAction<any>) {
+            // todo filter price
+            console.log(payload, state.all);
+            state.all.forEach((item: any) => {console.log(item.name)});
+        },
+	},
+
  	extraReducers: (builder) => {
  		builder
- 			// .addMatcher(
- 			// 	isAnyOf(getArticles.fulfilled),
- 			// 	(state, action: PayloadAction<Array<PostItem>>) => {
- 			// 		state.all = action.payload
- 			// 	}
- 			// )
 			 .addMatcher(
 				isAnyOf(getProducts.fulfilled),
 				(state, action: PayloadAction<Array<ProductItem>>) => {
@@ -34,4 +35,4 @@ import { getProducts, ProductItem } from "../../thunks/products";
  })
 
  export const ProductsReducer = Products.reducer
- export const {} = Products.actions
+ export const {filterProducts, filter2Products} = Products.actions

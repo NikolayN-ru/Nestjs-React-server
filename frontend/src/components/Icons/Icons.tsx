@@ -40,13 +40,15 @@ const Icons: FC = () => {
                     {cart && cart.length} товара в корзине
                     <hr />
                     {cart && cart.map((item: any, id: number) => {
-                        return (
+                        // item.quantity ? 
+                            return (
                             <div key={id}>
                                 <Link to={`item/${item.id}`}>
                                     <MiniItem >{item.name}- количество{item.quantity}</MiniItem>
                                 </Link>
                             </div>
                         )
+                                // : null;
                     })}
                 </CartList>
             </CartIcoWrapper>

@@ -37,14 +37,15 @@ const Order: FC = () => {
             userEmail: 'Flintstone@gmail.com'
         }
 
-        api.get<any>('/telegram', {
-            data: {
+        api.post<any>('/telegram', {
+            // params: {
+            // data: {
                 "order": " 000234",
                 "price": "= 123P"
-            },
-            headers: {
-                'Content-Type': 'application/json',
-            }
+            // },
+            // headers: {
+                // 'Content-Type': 'application/json',
+            // }
         },
         )
     }

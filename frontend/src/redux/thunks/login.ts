@@ -27,10 +27,14 @@ export const getLogin = createAsyncThunk<any, any, any>(
                     "email": "napadaylo2@gmail.com",
                     "password": "simple commentwww 2"
                 },
-                headers: {
-                    'Content-Type': 'application/json',
-                }
+                // headers: {
+                //     'Content-Type': 'application/json',
+                // }
             },
+            { headers: {
+                "Authorization": "Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwidXNlcm5hbWUiOiJQZXR5YTIiLCJlbWFpbCI6Im5hcGFkYXlsbzJAZ21haWwuY29tIiwiaWF0IjoxNjYxMzM2OTI3fQ.aThUXR0_aVoeAVQbnCEfN6T5s5eoDrEIBIfNxcidqzg"
+
+            }}
         )
 
         if (login.status >= 400) {

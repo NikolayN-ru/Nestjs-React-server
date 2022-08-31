@@ -1,6 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { CartProductReduser } from "./reducers/cartReducer/cartReducer";
+import { FilerProductReduser } from "./reducers/filterReducer/filterReducer";
 import { ProductItemReducer } from './reducers/productItemReducer/productItemReducer';
 import { ProductsReducer } from "./reducers/productsReducer/productsReducer";
 import { TagsReducer } from "./reducers/tagReducer/tagReducer";
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
     productItem: ProductItemReducer,
     user: UserReducer,
     tags: TagsReducer,
-    cart: CartProductReduser
+    cart: CartProductReduser,
+    filter: FilerProductReduser,
 })
 
 // создаем стор - передаем туда объект - редюсер

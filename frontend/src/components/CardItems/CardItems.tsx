@@ -9,21 +9,12 @@ const localState = [
     { pk: 2, title: 'no', price: 500 },
 ]
 
-const Items: FC = () => {
-    const dispatch = useAppDispatch()
-    const { all } = useAppSelector(state => state.products)
+const Items: FC<any> = ({all}) => {
 
-    useEffect(() => {
-        dispatch(getProducts())
-    }, [])
-
-    useEffect(() => {
-        // console.log('продукты: ', all)
-    }, [all])
 
     return (
         <CardItemsWrapper>
-            {all && all.map((item, id) => <CardProduct key={id} item={item} />)}
+            {all && all.map((item:any, id: number) => <CardProduct key={id} item={item} />)}
             {/* {localState.map(({ pk }, id) => <CardProduct key={id} link={pk} />)} */}
         </CardItemsWrapper>
     )

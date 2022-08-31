@@ -27,7 +27,7 @@ export const getProducts = createAsyncThunk<Array<ProductItem>, void, { rejectVa
     async (_, thunkApi) => {
         const posts = await api.get<Array<ProductItem>>('/yarn/product', {
             data: { },
-            headers: { }
+            headers: {}
         })
 
         if (posts.status >= 400) {

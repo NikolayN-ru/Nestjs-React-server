@@ -2,13 +2,18 @@ import React, { FC } from "react"
 import { ButtonDelete, CartItemWrapper, ContentParagraph, ImgItem, WrapperContent } from "./CartItem.styled";
 import image2 from '../../../assets/image2.webp';
 import { Link } from "react-router-dom";
+import { useAppDispatch } from "../../../redux";
+import { delCartProduct } from "../../../redux/reducers/cartReducer/cartReducer";
 
 const CartItem: FC<any> = ({ item }) => {
-
+    const dispatch = useAppDispatch()
     const DeleteItem = () => {
-
+        dispatch(delCartProduct(item));
     }
 
+    if (!item.quantity) {
+        return null
+    }
     return (
         // <Link to={`item/${item.name}`}>
         <CartItemWrapper>
