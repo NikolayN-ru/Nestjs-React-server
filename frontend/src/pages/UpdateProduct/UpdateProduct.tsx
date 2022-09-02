@@ -15,6 +15,8 @@ const UpdateProduct = () => {
     }, [])
     console.log(item, 'item');
 
+    
+
     if (!item.name) {
         return (
             <>loading</>

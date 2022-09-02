@@ -31,7 +31,7 @@ export class YarnService {
     }
 
     async createProduct(dto: CreateProductYarnDto, picture): Promise<ProductYarn> {
-
+ 
         const picturePath = this.fileService.createFile(FileType.IMAGE, picture);
 
         const product = await this.productYarnModel.create({ ...dto, image: picturePath });
@@ -54,17 +54,21 @@ export class YarnService {
         const picturePath = this.fileService.createFile(FileType.IMAGE, picture);
         // console.log(picturePath, 'picturePath');
         const product = await this.productYarnModel.find({ _id: id });
-        product[0].extraVariables.push({ ...dto, image: picturePath});
+        product[0].extraVariables.push({ ...dto, image: picturePath });
         // console.log(dto);
         await product[0].save();
         return product;
     }
-    
+
     // update product
     // вернет новый объект уже обновленный !!!
     // return this.productYarnModel.findByIdAndUpdate(id, dto, { new: true }).exec();
 
-    async createTag(dto: CreateTagYarnDto) {
+    async deleteProduct(id): Promise<any> {
+        return await this.productYarnModel.findByIdAndRemove(id);
+    }
+
+    async createTag(dto: CreateTagYarnDto): Promise<any> {
         const tag = await this.tagYarnModel.create(dto);
         return tag;
     }
@@ -75,8 +79,8 @@ export class YarnService {
         return productId;
     }
 
-    async allTags() {
-        const allTags = await this.tagYarnModel.find()
+    async allTags(): Promise<any> {
+        const allTags = await this.tagYarnModel.find();
         return allTags;
     }
 }

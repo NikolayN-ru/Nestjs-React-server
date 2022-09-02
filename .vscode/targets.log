@@ -6,8 +6,11 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
+make: *** No rule to make target `all'.  Stop.
 
-# Make data base, printed on Fri Aug 26 20:46:51 2022
+
+# Make data base, printed on Fri Sep  2 15:56:20 2022
 
 # Variables
 
@@ -22,6 +25,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # automatic
 @F = $(notdir $@)
 # makefile
+ 
 CURDIR := /Users/nn/Desktop/try/LB1
 # makefile
 SHELL = /bin/sh
@@ -38,11 +42,13 @@ VSCODE_CWD = /
 # environment
 PATH = /Users/nn/opt/anaconda3/bin:/Users/nn/opt/anaconda3/condabin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public
 # environment
+LaunchInstanceID = E5281B12-4C84-48AC-AA77-C64DD959F3F5
+# environment
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.fZ1W97IFMY/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.skJC16QUlt/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -62,7 +68,7 @@ VSCODE_CODE_CACHE_PATH = /Users/nn/Library/Application Support/Code/CachedData/e
 # environment
 LOGNAME = nn
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 CONDA_PROMPT_MODIFIER = (base) 
 # environment
@@ -90,6 +96,7 @@ USER = nn
 # environment
 CONDA_SHLVL = 1
 # default
+ 
 MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
 # default
 .VARIABLES := 
@@ -125,6 +132,8 @@ MAKEFILES :=
 LC_ALL = C
 # environment
 CONDA_PYTHON_EXE = /Users/nn/opt/anaconda3/bin/python
+# environment
+SECURITYSESSIONID = 186a3
 # automatic
 ^F = $(notdir $^)
 # default
@@ -138,13 +147,13 @@ MAKELEVEL := 0
 # environment
 CONDA_PREFIX = /Users/nn/opt/anaconda3
 # environment
-VSCODE_PID = 86647
+VSCODE_PID = 507
 # environment
 _CE_CONDA = 
 # environment
 LANG = C
 # variable set hash-table stats:
-# Load=66/1024=6%, Rehash=0, Collisions=2/90=2%
+# Load=68/1024=7%, Rehash=0, Collisions=2/92=2%
 
 # Pattern-specific Variable Values
 
@@ -152,9 +161,9 @@ LANG = C
 
 # Directories
 
-# . (device 16777223, inode 12890075682): 11 files, no impossibilities.
+# . (device 16777223, inode 12890075682): 12 files, no impossibilities.
 
-# 11 files, no impossibilities in 1 directories.
+# 12 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -207,6 +216,7 @@ dev:
 #  Modification time never checked.
 #  File has not been updated.
 #  commands to execute (from `Makefile', line 3):
+ 
 	docker-compose up --build
 	
 
@@ -229,8 +239,6 @@ dev:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Fri Aug 26 20:46:51 2022
+# Finished Make data base on Fri Sep  2 15:56:20 2022
 
  
-make: *** No rule to make target `all'.  Stop.
-
