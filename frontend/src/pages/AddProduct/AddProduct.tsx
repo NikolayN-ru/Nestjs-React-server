@@ -33,7 +33,6 @@ const AddProduct: FC = () => {
 
     const [picture, setPicture] = useState<any>(initialState);
 
-    // const formData = new FormData();
     const form = useFormik({
         initialValues: {
             title: '',
@@ -63,7 +62,6 @@ const AddProduct: FC = () => {
                 }
             }
         }
-        // console.log(form2.values)
         api.post('/yarn/product', formdata);
         // api.post('/yarn/product', {...form2.values});
     }

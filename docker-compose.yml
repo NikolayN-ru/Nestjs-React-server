@@ -3,7 +3,7 @@ services:
   # backend:
   #   build: ./backend
   #   container_name: backend-NestJs3
-  #   command: npm run start:prod
+  #   command: npm run start
   #   restart: unless-stopped
   #   # restart: always
   #   # stdin_open: true
@@ -15,12 +15,14 @@ services:
   #   depends_on:
   #     - mongo
   #     - postgres11
+  #   stdin_open: true
+  #   tty: true
 
   # frontend:
   #   build: ./frontend
   #   container_name: frontend-ReactJs
   #   # command: npm run build && npm run start
-  #   command: npm run dev
+  #   command: npm run start
   #   restart: unless-stopped
   #   volumes:
   #     - './frontend:/app'
@@ -28,8 +30,10 @@ services:
   #     - "3070:3070"
   #   environment:
   #     - PORT=3000
-  #   depends_on:
-  #     - backend
+  #   stdin_open: true
+  #   tty: true
+  #   # depends_on:
+  #   #   - backend
 
   mongo:
     image: mongo:4.4.4
