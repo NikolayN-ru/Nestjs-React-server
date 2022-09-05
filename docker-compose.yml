@@ -1,39 +1,40 @@
 version: '3.8'
 services:
 
-  # frontend:
-  #   build: ./frontend
-  #   container_name: frontend-ReactJs
-  #   # command: npm run build && npm run start
-  #   command: npm run start
-  #   restart: unless-stopped
-  #   volumes:
-  #     - './frontend:/app'
-  #   ports:
-  #     - "3070:3070"
-  #   environment:
-  #     - PORT=3000
-  #   stdin_open: true
-  #   tty: true
-  #   # depends_on:
-  #   #   - backend
+  frontend:
+    build: ./frontend
+    container_name: frontend-ReactJs
+    # command: npm run build && npm run start
+    command: npm run start
+    restart: always
+    volumes:
+      - './frontend:/app'
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+    stdin_open: true
+    tty: true
+    # depends_on:
+    #   - backend
 
-  # backend:
-  #   build: ./backend
-  #   container_name: backend-NestJs3
-  #   command: npm run start:dev
-  #   restart: always
-  #   volumes:
-  #     - './backend:/app'
-  #   ports:
-  #     - "5000:5000"
-  #   depends_on:
-  #     - mongo
-  #     - postgres11
-  #   expose:
-  #     - "5433"
-  #   stdin_open: true
-  #   tty: true
+  backend:
+    build: ./backend
+    container_name: backend-NestJs3
+    command: npm run start:dev
+    restart: always
+    volumes:
+      - './backend:/app'
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+      - postgres11
+    expose:
+      - "5433"
+      - "27017"
+    stdin_open: true
+    tty: true
 
 
   postgres11:

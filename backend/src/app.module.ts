@@ -23,7 +23,8 @@ import { NeedlesModule } from './needles/needles.module';
         ServeStaticModule.forRoot({
             rootPath: path.resolve(__dirname, 'static'),
         }),
-        MongooseModule.forRoot('mongodb://admin:admin@localhost:27017'),
+        // MongooseModule.forRoot('mongodb://admin:admin@localhost:27017'),
+        MongooseModule.forRoot('mongodb://admin:admin@mongo:27017'),
         TypeOrmModule.forRoot(ormConfig),
         TrackModule,
         FileModule,

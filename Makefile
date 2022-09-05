@@ -1,5 +1,4 @@
 dev:
-#перебилд
 	docker-compose up --build
 start:
 	docker-compose up -d
