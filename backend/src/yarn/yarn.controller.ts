@@ -40,10 +40,27 @@ export class YarnController {
         return this.yarnService.getAllProductYarn()
     }
 
+    @Put('product/filter')
+    getProductFilter(@Body('data') dto: any){
+        console.log(dto.state, 'dto-filter');
+        return this.yarnService.getProductFilter(dto)
+    }
+
+    @Get('product/search')
+    getProductSearch(@Body('data') dto: any) {
+        console.log(dto, 'DTO-Product-Search');
+        return this.yarnService.getProductSearch(dto.title)
+    }
+
     @Get('productItem/:id')
     getProductById(@Param('id') id: string) {
         return this.yarnService.getProductById(id)
     }
+
+    // @Put('productItem/:id')
+    // updateProductMain(@Param('id') id: string, @Body('data') dto: CreateProductYarnDto) {
+    //     return this.yarnService.updateProductMain(id, dto);
+    // }
 
     // updateVariableProduct(@Param('id') id: string, @Body() dto: UpdateExtraVariablesProductDto){
     //!!! variable product! - update

@@ -32,32 +32,17 @@ const Main: FC = () => {
             }
         })
 
-        // todo по длине
-        // if (qery.metrs.length) {
         if (!qery.metrs.length) {
-
-            // qery.metrs.forEach((item:any) => {
-            // console.log(filterMetr[item]);
             newState = newState.filter((item: any, idx: number) => {
-                    // console.log(item.length, item.length >= 200)
                     return item.length >= item[0] && item.length <= item[1];
                 })
-
-            // })
-            // newState = newState.filter((item: any, idx: number) => {
-            //     // console.log(item.length, item.length >= 200)
-            //     return item.length >= 150
-            // })
-
         }
         setState(newState);
-
     }
 
     const resetFilter = () => {
         setState(all)
     }
-
     return (
         <MainWrapper>
             <FilterBlock localData={DATA} setFilter={setFilter} resetFilter={resetFilter} />

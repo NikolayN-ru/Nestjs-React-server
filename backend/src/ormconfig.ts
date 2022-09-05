@@ -2,8 +2,8 @@ import { ConnectionOptions, DataSourceOptions } from "typeorm";
 
 const ormConfig: DataSourceOptions = {
     type: 'postgres',
-    host: 'localhost',
-    port: 5433,
+    host: '127.0.0.1',
+    port: 5432,
     username: 'postgres',
     password: 'password',
     database: 'mediumclone',

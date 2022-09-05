@@ -26,8 +26,6 @@ const initialState: productAddI = {
     picture: undefined
 }
 
-
-
 const AddProduct: FC = () => {
     const [product, setProduct] = useState<Object>(initialState);
 

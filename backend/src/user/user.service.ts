@@ -8,7 +8,7 @@ import { UserEntity } from "./user.entity";
 import { sign } from 'jsonwebtoken';
 import { JWT_SECRET } from "../../config";
 import { userResponseInterface } from "./types/userResponse.interface";
-import { compare } from 'bcrypt';
+import { compare } from 'bcryptjs';
 
 
 @Injectable()

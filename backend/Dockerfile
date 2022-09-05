@@ -4,12 +4,10 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install
-
-# RUN npm i -g @nestjs/cli
+RUN npm i
 
 ADD . .
 
-# RUN npm run build
-# RUN npm prune --production
-CMD ["npm", "run" "build"]
+EXPOSE 5432
+
+CMD ["node", "dist/main"]

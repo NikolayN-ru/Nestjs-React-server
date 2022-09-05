@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert, OneToMany } from "typeorm";
-import {hash} from 'bcrypt';
+import {hash} from 'bcryptjs';
 // import { ArticleEntity } from "src/article/article.entity";
 import { ArticleEntity } from "../../src/article/article.entity";
 

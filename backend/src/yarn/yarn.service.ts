@@ -31,7 +31,7 @@ export class YarnService {
     }
 
     async createProduct(dto: CreateProductYarnDto, picture): Promise<ProductYarn> {
- 
+
         const picturePath = this.fileService.createFile(FileType.IMAGE, picture);
 
         const product = await this.productYarnModel.create({ ...dto, image: picturePath });
@@ -49,7 +49,35 @@ export class YarnService {
         const allProduct = await this.productYarnModel.find().populate('tags');
         return allProduct;
     }
-    //!!! variable product! - update
+
+    async getProductFilter({ state }) {
+        // const getProductFilter = await this.productYarnModel.find({ tags: $elemMatch:{ title: [...state] }} })
+        const getProductFilter = await this.productYarnModel.find({
+            extraVariables: {
+                $elemMatch: {
+                    name: '9999'
+                }
+            }
+        }).populate('extraVariables')
+        console.log(getProductFilter);
+        return getProductFilter;
+    }
+
+    async getProductSearch(title){
+        return this.productYarnModel.find({ name: title})
+    }
+
+    // async updateProductMain(id: string, dto: CreateProductYarnDto){
+    //     // обновление основных параметров продукта
+    //     const productUpdate = await this.productYarnModel.update({ _id: id}, {
+    //         $set: {
+    //             name: dto.name,
+    //         }
+    //     })
+    //     productUpdate.save();
+    //     return productUpdate;
+    // }
+
     async updateProduct(id, dto, picture) {
         const picturePath = this.fileService.createFile(FileType.IMAGE, picture);
         // console.log(picturePath, 'picturePath');

@@ -1,10 +1,14 @@
-import React, { FC } from "react"
+import React, { FC, useState } from "react"
 import { HeaderBlock, InputCheckbox } from "../FilterBlock/FilterBlock.styled";
 import { FilterItemWrapper } from "./FilterItem.styled";
 
 
 
-const FilterItem: FC<any> = ({ localState, header }) => {
+const FilterItem: FC<any> = ({ localState, header, change=null }) => {
+
+
+
+
     return (
         <FilterItemWrapper>
             <HeaderBlock>
@@ -13,7 +17,7 @@ const FilterItem: FC<any> = ({ localState, header }) => {
             {localState.map((item: any, id: number) => {
                 return (
                     <label style={{ display: 'block', fontSize: 15, color: 'rgba(70,70,70,.9)' }}>
-                        <InputCheckbox key={id} placeholder={item} type={'checkbox'} checked={false} />
+                        <InputCheckbox key={id} placeholder={item} type={'checkbox'} onChange={() => change(item)} />
                         {item}
                     </label>
                 )
