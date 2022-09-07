@@ -15,8 +15,6 @@ services:
       - PORT=3000
     stdin_open: true
     tty: true
-    # depends_on:
-    #   - backend
 
   backend:
     build: ./backend
@@ -35,7 +33,6 @@ services:
       - "27017"
     stdin_open: true
     tty: true
-
 
   postgres11:
     hostname: postgres_db

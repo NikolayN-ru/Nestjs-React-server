@@ -8,7 +8,6 @@ export class Auth2Controller {
 
     @Post('register')
     register(@Body() dto: Omit<AuthDto, '_id'>): string {
-        // console.log(headers);
         return `auth2-register ${dto.login}`
     }
 

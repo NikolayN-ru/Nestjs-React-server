@@ -30,7 +30,7 @@ export class YarnController {
     ]))
     createProduct(
         @UploadedFiles() files, @Body() dto: CreateProductYarnDto) {
-            console.log(dto, "dto!!!!!!!!", files, "FILES!!");
+            // console.log(dto, "dto!!!!!!!!", files, "FILES!!");
         const { picture } = files;
         return this.yarnService.createProduct(dto, picture[0]);
     }
@@ -40,10 +40,13 @@ export class YarnController {
         return this.yarnService.getAllProductYarn()
     }
 
-    @Put('product/filter')
-    getProductFilter(@Body('data') dto: any){
-        console.log(dto.state, 'dto-filter');
-        return this.yarnService.getProductFilter(dto)
+    @Get('product/filter')
+    getProductFilter(){
+        return this.yarnService.getProductFilter()
+        // return 'FILTER'
+    // getProductFilter(@Body('data') dto: any){
+        // console.log(dto.state, 'dto-filter');
+        // return this.yarnService.getProductFilter(dto)
     }
 
     @Get('product/search')

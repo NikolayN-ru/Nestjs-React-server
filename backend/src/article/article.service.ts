@@ -11,13 +11,12 @@ export class ArticleService {
     constructor(@InjectRepository(ArticleEntity) private readonly articleRepository: Repository<ArticleEntity>) { }
 
     async createArticle(currentUser: UserEntity, createArticleDto: CreateArticleDto) {
-        const article = new ArticleEntity()
+        const article = new ArticleEntity();
         Object.assign(article, createArticleDto);
         if (!article.tagList) {
             article.tagList = [];
         }
-
-        article.slug = this.getSlug(createArticleDto.title)
+        article.slug = this.getSlug(createArticleDto.title);
         article.author = currentUser;
         return await this.articleRepository.save(article);
     }
@@ -31,7 +30,6 @@ export class ArticleService {
         if (!article) {
             throw new HttpException('Article does not exist', HttpStatus.NOT_FOUND);
         }
-
         if (article.author.id !== currentUserId) {
             throw new HttpException('you are not User Main-author', HttpStatus.FORBIDDEN);
         }
@@ -50,7 +48,7 @@ export class ArticleService {
         if (article.author.id !== currentUserId) {
             throw new HttpException('you are not User Main-author', HttpStatus.FORBIDDEN);
         }
-        Object.assign(article, updateArticleDto)
+        Object.assign(article, updateArticleDto);
         return await this.articleRepository.save(article);
     }
 

@@ -50,15 +50,16 @@ export class YarnService {
         return allProduct;
     }
 
-    async getProductFilter({ state }) {
+    async getProductFilter() {
         // const getProductFilter = await this.productYarnModel.find({ tags: $elemMatch:{ title: [...state] }} })
         const getProductFilter = await this.productYarnModel.find({
-            extraVariables: {
-                $elemMatch: {
-                    name: '9999'
-                }
-            }
-        }).populate('extraVariables')
+            // tags: { $exists: true}, $where: 'this.tags.length>0'
+            // tags: {$size: { $gt : 1 }}
+            'tags.0': {$exists: true}
+        }).populate({
+            path: 'tags',
+            match: { title: { $in: ['хлопок'] }}
+        })
         console.log(getProductFilter);
         return getProductFilter;
     }
@@ -93,7 +94,10 @@ export class YarnService {
     // return this.productYarnModel.findByIdAndUpdate(id, dto, { new: true }).exec();
 
     async deleteProduct(id): Promise<any> {
-        return await this.productYarnModel.findByIdAndRemove(id);
+        const file = await this.productYarnModel.findOne({ _id: id },{image: 1});
+        console.log('filename - ', file)
+        // return await this.productYarnModel.findByIdAndRemove(id);
+        return 'delete';
     }
 
     async createTag(dto: CreateTagYarnDto): Promise<any> {

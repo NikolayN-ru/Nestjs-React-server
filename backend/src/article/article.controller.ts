@@ -21,9 +21,7 @@ export class ArticleController {
 
     @Get(':slug')
     async gegtSingleAtricle(@Param('slug') slug: string): Promise<ArticleResponseInterface> {
-        //находим артикл по слагу
         const article = await this.articleService.findBySlug(slug);
-        // возвращаем на фронтенд ответ
         return this.articleService.buildArticleResponse(article);
     }
 
@@ -45,5 +43,4 @@ export class ArticleController {
         const article = await this.articleService.updateArticle(slug, updateArticleDto, currentUserId);
         return this.articleService.buildArticleResponse(article);
     }
-
 }
