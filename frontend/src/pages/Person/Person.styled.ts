@@ -2,12 +2,16 @@ import styled from 'styled-components';
 
 export const PersonWrapper = styled('div')`
 & {
-    padding-top: 100px;
+    max-width: 100%;
+    padding-top: 50px;
     background-color: #fafafa;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     padding-bottom: 300px;
+    display: flex;
+    gap :60px;
 }
 `
+
 
 export const PersonTitle = styled('h1')`
 & {

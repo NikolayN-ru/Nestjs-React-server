@@ -48,7 +48,6 @@ const Order: FC = () => {
             "phone": `${phone}`,
             "delivery": `${deliverySelection[delivery]}`,
             "pay": `${paySection[pay]}`,
-
         },
         )
     }
@@ -61,13 +60,15 @@ const Order: FC = () => {
                     <InputOrderTitle >
                         ФИО*
                     </InputOrderTitle>
-                    <InputOrder placeholder='Введите ФИО' onChange={(e) => setUsername(prev => e.target.value)} />
+                    <InputOrder placeholder='Введите ФИО'
+                        onChange={(e) => setUsername(prev => e.target.value)} />
                 </InputOrderWrapper>
                 <InputOrderWrapper>
                     <InputOrderTitle>
                         Телефон*
                     </InputOrderTitle>
-                    <InputOrder placeholder='+7 --- --- -- --' onChange={(e) => setPhone(prev => e.target.value)} />
+                    <InputOrder placeholder='+7 --- --- -- --'
+                        onChange={(e) => setPhone(prev => e.target.value)} />
                 </InputOrderWrapper>
                 <InputOrderWrapper>
                     <InputOrderTitle>
@@ -90,11 +91,10 @@ const Order: FC = () => {
                         onClick={() => setPay(idx)}>{item}
                     </Select>)}
             </WrapperSelect>
-            {delivery + 1 && pay + 1 ? <Button onClick={() => submitOrder()} disabled={true}>
+            {delivery + 1 && pay + 1 ? <Button onClick={submitOrder} disabled={false}>
                 Оформить заказ
             </Button> : false
             }
-
         </OrderWrapper>
     )
 }

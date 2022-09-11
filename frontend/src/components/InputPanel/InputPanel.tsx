@@ -29,14 +29,14 @@ const InputPanel = () => {
     return (
         <InputPanelWrapper>
             <Input placeholder='строка поиска' onChange={handleChange} value={search} />
-            {search.length &&
+            {search.length ?
                 <SeachPanel >
                     {/* {search.map((item: any, id: number) => {
                         <Link to={`/item/${item.name}`}>
                             <p>{item.name}</p>
                         </Link>
                     })} */}
-                </SeachPanel>
+                </SeachPanel> : null
             }
         </InputPanelWrapper>
     )

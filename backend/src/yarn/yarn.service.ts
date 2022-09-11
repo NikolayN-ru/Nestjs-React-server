@@ -45,18 +45,22 @@ export class YarnService {
         return product;
     }
 
+    // async deleteFile(filePath: string): Promise<void> {
+    //     return await this.fileService.removeFile(filePath);
+    // }
+
     async getAllProductYarn() {
         const allProduct = await this.productYarnModel.find().populate('tags');
         return allProduct;
     }
 
     async getProductFilter() {
-        // const getProductFilter = await this.productYarnModel.find({ tags: $elemMatch:{ title: [...state] }} })
+        // const getProductFilter = await this.productYarnModel.find({ tags: $elemMatch:{ title: [...state] }} });
         const getProductFilter = await this.productYarnModel.find({
             // tags: { $exists: true}, $where: 'this.tags.length>0'
             // tags: {$size: { $gt : 1 }}
             'tags.0': {$exists: true}
-        }).populate({
+        },{tags: 1}).populate({
             path: 'tags',
             match: { title: { $in: ['хлопок'] }}
         })
@@ -94,9 +98,13 @@ export class YarnService {
     // return this.productYarnModel.findByIdAndUpdate(id, dto, { new: true }).exec();
 
     async deleteProduct(id): Promise<any> {
-        const file = await this.productYarnModel.findOne({ _id: id },{image: 1});
-        console.log('filename - ', file)
-        // return await this.productYarnModel.findByIdAndRemove(id);
+        const file:{_id:string, image: string} = await this.productYarnModel.findOne({ _id: id },{image: 1});
+        // console.log('filename - ', file.image)
+        if(file.image){
+            this.fileService.removeFile(file.image);
+        }
+        await this.productYarnModel.findByIdAndRemove(id);
+        // return 
         return 'delete';
     }
 

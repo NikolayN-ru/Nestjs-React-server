@@ -2,16 +2,14 @@ import styled from 'styled-components';
 
 export const FilterBlockWrapper = styled('div')`
 & {
-    width: 300px;
+    min-width: 170px;
+    max-width: 170px;
     display: flex;
     flex-direction: column;
-    /* background-color: #919; */
     margin-left: 60px;
     padding: 20px;
     align-self: flex-start;
     padding-top: 50px;
-
-
 }
 `
 
@@ -34,7 +32,12 @@ export const FilterCoast = styled('div')`
 
 export const Input = styled('input')`
 & {
-    type: range;
+    /* type: range; */
+    width: 60px;
+    margin-right: 10px;
+    border: 1px solid #BDBDBD;
+    font-size: 20px;
+    color: #1b5b7f;
 }
 `
 
@@ -58,5 +61,24 @@ export const InputCheckbox = styled('input')`
     }		   
      &:active {
      background-color: cornflowerblue;
+   }
+`
+
+
+export const ButtonFilter = styled('button')`
+& {
+     width: 130px;
+     height: 40px;
+     border-radius: 4px;
+     background-color: #ccd9e0;
+     border: 1px solid #fff;
+     /* color: #FFFFFF; */
+    }		   
+    &:hover {
+         border: 1px solid #1579b3;
+     /* background-color: cornflowerblue; */
+   }
+   &:active {
+    opacity: 0.7;
    }
 `

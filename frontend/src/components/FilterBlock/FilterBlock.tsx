@@ -4,7 +4,7 @@ import { useAppDispatch } from "../../redux";
 import { filter2Products, filterProducts } from "../../redux/reducers/productsReducer/productsReducer";
 // import { filterProducts } from "../../redux/reducers/productsReducer/productsReducer";
 import FilterItem from "../FilterItem/FilterItem";
-import { FilterBlockWrapper, FilterCoast, FilterCompound, HeaderBlock, Input, InputCheckbox } from "./FilterBlock.styled";
+import { ButtonFilter, FilterBlockWrapper, FilterCoast, FilterCompound, HeaderBlock, Input, InputCheckbox } from "./FilterBlock.styled";
 
 const FilterBlock: FC<any> = ({ localData, setFilter, resetFilter }) => {
     const [price, setPrice] = useState({ min: 0, max: 100000 });
@@ -21,7 +21,6 @@ const FilterBlock: FC<any> = ({ localData, setFilter, resetFilter }) => {
         const newState = [...state];
         newState.push(item);
         setState(newState);
-        // console.log(state)
     }
 
     const filterCompound = () => {
@@ -30,10 +29,13 @@ const FilterBlock: FC<any> = ({ localData, setFilter, resetFilter }) => {
         })
     }
 
+    const resetChange = () => {
+        resetFilter();
+        setPrice({min: 0, max: 10000});
+    }
+
     return (
         <FilterBlockWrapper>
-            <button onClick={resetFilter}>reset-filter</button>
-            <button onClick={() => { setFilter({ ...price, metrs }) }}>filter!</button>
             <HeaderBlock>
                 фильтр по пряже:
             </HeaderBlock>
@@ -44,15 +46,15 @@ const FilterBlock: FC<any> = ({ localData, setFilter, resetFilter }) => {
                 <Input placeholder="от" onChange={(e) => changeValue('min', e)} />
                 <Input placeholder="до" onChange={(e) => changeValue('max', e)} />
             </FilterCoast>
+            <ButtonFilter onClick={() => { setFilter({ ...price, metrs }) }}>отфильтровать</ButtonFilter>
+            <ButtonFilter onClick={resetChange}>сброс фисльтров</ButtonFilter>
             <FilterItem localState={localData[0]} header={localData[2][0]} change={change} />
             <FilterItem localState={localData[1]} header={localData[2][1]} change={change} />
-            <button onClick={() => filterCompound()}>фильтровать по составу</button>
+            {/* <button onClick={() => filterCompound()}>фильтровать по составу</button> */}
+
             {/* <FilterItem localState={localData[2]} header={localData[3][2]} /> */}
         </FilterBlockWrapper>
     )
 }
 
 export default FilterBlock;
-
-
-// по Производителю

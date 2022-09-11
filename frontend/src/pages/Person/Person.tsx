@@ -7,6 +7,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { changeUser } from '../../redux/thunks/shangeUser';
 import { getTags, newTag } from '../../redux/thunks/tags';
 import ListProducts from '../../components/ListProducts/ListProducts';
+import MenuPerson from '../../components/Menus/MenuPerson/MenuPerson';
 
 interface Iuser {
     id: number;
@@ -55,16 +56,16 @@ const Person: FC = () => {
 
     return (
         <PersonWrapper>
-            <PersonTitle>
+            <MenuPerson/>
+            <ListProducts/>
+            {/* <PersonTitle>
                 Страница пользователя - {all.user.username}
                 <ButtonAddProduct>
                     <Link to="/login/addProduct">добавить товар</Link>
                 </ButtonAddProduct>
                 <ButtonExit onClick={logoutPage}>выйти</ButtonExit>
-                {/* <ButtonExit onClick={logoutPage}></ButtonExit> */}
-
-            </PersonTitle>
-            <ContentWrapper>
+            </PersonTitle> */}
+            {/* <ContentWrapper>
                 <ButtonWrapper>
                     <ButtonSelect onClick={() => setUser({ key: 'bio', value: all.user.bio })}>персональные данные</ButtonSelect>
                     <ButtonSelect onClick={() => setUser({ key: 'email', value: all.user.email })}>email</ButtonSelect>
@@ -78,8 +79,8 @@ const Person: FC = () => {
                     <input type="text" value={user.value && user.value} style={{ width: "200px", height: "50px" }} onChange={(e) => setUser({ key: user.key, value: e.target.value })} />
                     <button onClick={patchUser}>изменить</button>
                 </Content>
-            </ContentWrapper>
-            <div>
+            </ContentWrapper> */}
+            {/* <div>
                 <br />
                 <br />
                 <br />
@@ -97,8 +98,7 @@ const Person: FC = () => {
                 <button>добавление варианта категории-производитель</button>
                 <br />
                 <br />
-            </div>
-            <ListProducts/>
+            </div> */}
         </PersonWrapper>
     )
 }

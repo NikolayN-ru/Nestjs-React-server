@@ -1,7 +1,8 @@
 import { useFormik } from "formik";
 import React, { FC, useState } from "react";
 import { api } from "../../api/api";
-import { AddProductWrapper, BlockInputs, ButtonSubmit, InputAddProduct, TitleAdd } from "./AddProduct.styled";
+import MenuPerson from "../../components/Menus/MenuPerson/MenuPerson";
+import { AddProductWrapper, BlockInputs, ButtonSubmit, InputAddProduct, SelectAddProduct, TitleAdd } from "./AddProduct.styled";
 
 interface productAddI {
     name: string;
@@ -26,6 +27,8 @@ const initialState: productAddI = {
     picture: undefined
 }
 
+const categroyVariables: string[] = ["Sandnes Garn", "Infinity", "Laines Du Nord", "Lana Gatto", "Mafil"];
+
 const AddProduct: FC = () => {
     const [product, setProduct] = useState<Object>(initialState);
 
@@ -48,14 +51,14 @@ const AddProduct: FC = () => {
 
     const addProduct = () => {
         const formdata = new FormData();
-        for(let key in form2.values){
+        for (let key in form2.values) {
             const q = form2.values[key as keyof productAddI];
-            if(q){
-                if(typeof q === 'string' || typeof q === 'number'){
+            if (q) {
+                if (typeof q === 'string' || typeof q === 'number') {
                     formdata.append(key, q.toString());
                     continue
                 }
-                if(typeof q === 'object'){
+                if (typeof q === 'object') {
                     formdata.append(key, q);
                 }
             }
@@ -66,7 +69,8 @@ const AddProduct: FC = () => {
 
     return (
         <AddProductWrapper>
-            <div>
+            <MenuPerson />
+            {/* <div>
                 <form onSubmit={form.handleSubmit}>
                     <InputAddProduct
                         // name="name"
@@ -88,7 +92,7 @@ const AddProduct: FC = () => {
                     />
                     <button type="submit">submit!</button>
                 </form>
-            </div>
+            </div> */}
             <div>
                 <form onSubmit={form2.handleSubmit}>
                     <TitleAdd>
@@ -102,8 +106,19 @@ const AddProduct: FC = () => {
                             }}
                             onBlur={() => { form2.setFieldTouched('name', true) }}
                         />
-                        name
+                        Название
                     </BlockInputs>
+                    {/* <BlockInputs>
+                        <SelectAddProduct id="siF6" placeholder="категория" value={form2.values.categoryA}
+                        onChange={(e) => {
+                            form2.setFieldValue("categoryA", e.target.value);
+                        }}
+                        onBlur={() => { form2.setFieldTouched('categoryA', true) }}
+                        >
+                            {categroyVariables.map((item: string) => <option value={item} selected>{item}</option>)}
+                        </SelectAddProduct>
+                        Категория
+                    </BlockInputs> */}
                     <BlockInputs>
                         <InputAddProduct placeholder="categoryA"
                             value={form2.values.categoryA}
@@ -112,7 +127,7 @@ const AddProduct: FC = () => {
                             }}
                             onBlur={() => { form2.setFieldTouched('categoryA', true) }}
                         />
-                        categoryA
+                        Категория
                     </BlockInputs>
                     <BlockInputs>
                         <InputAddProduct placeholder="tagsA"
@@ -122,7 +137,7 @@ const AddProduct: FC = () => {
                             }}
                             onBlur={() => { form2.setFieldTouched('tagsA', true) }}
                         />
-                        tagsA
+                        Теги
                     </BlockInputs>
                     <BlockInputs>
                         <InputAddProduct placeholder="length"
@@ -132,7 +147,7 @@ const AddProduct: FC = () => {
                             }}
                             onBlur={() => { form2.setFieldTouched('length', true) }}
                         />
-                        length
+                        Длинна
                     </BlockInputs>
                     <BlockInputs>
                         <InputAddProduct placeholder="weight"
@@ -142,7 +157,7 @@ const AddProduct: FC = () => {
                             }}
                             onBlur={() => { form2.setFieldTouched('weight', true) }}
                         />
-                        weight
+                        Вес
                     </BlockInputs>
                     <BlockInputs>
                         <InputAddProduct placeholder="country"
@@ -152,7 +167,7 @@ const AddProduct: FC = () => {
                             }}
                             onBlur={() => { form2.setFieldTouched('country', true) }}
                         />
-                        country
+                        Страна
                     </BlockInputs>
                     <BlockInputs>
                         <InputAddProduct placeholder="price"
@@ -162,7 +177,7 @@ const AddProduct: FC = () => {
                             }}
                             onBlur={() => { form2.setFieldTouched('price', true) }}
                         />
-                        price
+                        Цена
                     </BlockInputs>
                     <BlockInputs>
                         <InputAddProduct placeholder="picture" type="file"
@@ -178,7 +193,7 @@ const AddProduct: FC = () => {
                             }}
                         // !!!  ??
                         />
-                        picture
+                        Изображение
                         {/* {picture && ( */}
                         {form2.values.picture && (
                             <div>

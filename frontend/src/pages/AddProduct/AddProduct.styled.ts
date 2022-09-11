@@ -2,16 +2,12 @@ import styled from 'styled-components';
 
 export const AddProductWrapper = styled('div')`
 & {
-    padding:20px;
-    /* height: 70vh; */
-    margin: 0 auto;
+    padding-top: 50px;
+    /* margin: 0 auto; */
+    /* flex-wrap: wrap; */
     display: flex;
-    /* width: 1%; */
-    flex-wrap: wrap;
-    flex-direction: column;
-    /* justify-content: center; */
-    /* align-items: flex-end; */
-    margin-left: 100px;
+    /* margin-left: 100px; */
+    margin-bottom: 30px;
 }
 `
 
@@ -37,6 +33,15 @@ export const InputAddProduct = styled('input')`
 & {
     /* margin:20px; */
     width: 300px;
+    padding: 10px;
+    border: 1px solid #e6e6e6;
+} 
+`
+
+export const SelectAddProduct = styled('select')`
+& {
+    /* margin:20px; */
+    width: 322px;
     padding: 10px;
     border: 1px solid #e6e6e6;
 } 

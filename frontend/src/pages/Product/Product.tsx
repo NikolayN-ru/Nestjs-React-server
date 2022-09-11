@@ -11,13 +11,14 @@ import image4 from '../../assets/image4.webp';
 import { useAppDispatch, useAppSelector } from "../../redux";
 import { getProductItem } from "../../redux/thunks/productItem";
 import { setCartProduct } from "../../redux/reducers/cartReducer/cartReducer";
+import MenuPerson from "../../components/Menus/MenuPerson/MenuPerson";
 // import { setCartProduct } from "../../redux/thunks/setCartProduct";
 
-const variation = [
-    { number: '1234', color: '36ee33f7', count: 13, image: 'path-image' },
-    { number: '3492', color: 'fdd718e0', count: 23, image: 'path-image' },
-    { number: '1023', color: '1c22e1df', count: 40, image: 'path-image' },
-]
+// const variation = [
+//     { number: '1234', color: '36ee33f7', count: 13, image: 'path-image' },
+//     { number: '3492', color: 'fdd718e0', count: 23, image: 'path-image' },
+//     { number: '1023', color: '1c22e1df', count: 40, image: 'path-image' },
+// ]
 
 const Item: FC = () => {
     const [state, setState] = useState<string>(image);

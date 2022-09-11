@@ -7,16 +7,16 @@ const BreadCamps: FC = () => {
     return (
         <BreadCampsWrapper>
             <BreadCampsLink>
-                / BreadCamps
+                / главная
             </BreadCampsLink>
-            <BreadCampsLink>
+            {/* <BreadCampsLink>
             <a href="">
                 / mock
             </a>
             </BreadCampsLink>
             <BreadCampsLink>
                 / Data[1]
-            </BreadCampsLink>
+            </BreadCampsLink> */}
         </BreadCampsWrapper>
     )
 }

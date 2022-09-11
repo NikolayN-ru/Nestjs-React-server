@@ -1,23 +1,21 @@
 import { FC } from "react"
 import { Link } from "react-router-dom";
 import { api } from "../../../api/api";
-import { ImageProduct, ListItemWrapper, TitleItem } from "./ListItem.styled";
+import { ButtonItem, ImageProduct, LinkItem, ListItemWrapper, TitleItem } from "./ListItem.styled";
 
-const ListItem: FC<any> = ({ item }) => {
+const ListItem: FC<any> = ({ item, deleteItem }) => {
 
-    const deleteItem = () => {
-        api.delete(`/yarn/product/${item._id}`)
-    }
+
     
     return (
         <ListItemWrapper>
-            <Link to={`/login/product/${item.name}`}>
+            <LinkItem to={`/login/product/${item.name}`}>
                 <TitleItem>
-                    ListItem = {item.name}
+                     {item.name}
                 </TitleItem>
-            </Link>
+            </LinkItem>
             <ImageProduct src={`http://localhost:5000/${item.image}`} alt="" />
-            <button onClick={deleteItem}>delete-item</button>
+            <ButtonItem onClick={()=>deleteItem(item._id)}>удалить товар</ButtonItem>
         </ListItemWrapper>
     )
 }

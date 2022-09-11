@@ -19,7 +19,7 @@ export class FileService {
         try {
             const fileMainName = file.originalname.split('.')[0];
             const fileExtension = file.originalname.split('.').pop();
-            const fileName = getSlug(fileMainName)+ '-' + uuid.v4() + '.' + fileExtension;
+            const fileName = getSlug(fileMainName) + '-' + uuid.v4() + '.' + fileExtension;
             const filePath = path.resolve(__dirname, '..', 'static', type);
             if (!fs.existsSync(filePath)) {
                 fs.mkdirSync(filePath, { recursive: true });
@@ -32,9 +32,17 @@ export class FileService {
     }
     removeFile(fileName: string) {
         // fs.writeFileSync(path.resolve(filePath, fileName), file.buffer);
-        fs.unlink(fileName, err => {
-            if(err) throw err; // не удалось удалить файл
-             console.log('Файл успешно удалён');
+
+        // console.log(__dirname, '__dirname');
+        const filePath = path.resolve(__dirname, '..', 'static', fileName);
+        // console.log(filePath, 'filePath-Full');
+        // console.log(fileName, 'fileName');
+
+        fs.unlink(filePath, err => {
+            if (err) {
+                console.log('неудалось удалить файл', err);
+            } // не удалось удалить файл
+            console.log('Файл успешно удалён');
         });
     }
 }

@@ -1,14 +1,33 @@
 import styled from 'styled-components';
 
+
+export const MainWrapper = styled('div')`
+&{
+    padding-top: 50px;
+    display: flex;
+}
+`
+
 export const UpdateProductWrapper = styled('div')`
 &{
-    margin: 50px;
-    padding: 50px;
     display: flex;
     flex-direction: column;
-    padding-left: 250px;
-    /* align-items: center; */
+    padding-left: 50px;
     color: blue;
+}
+`
+
+export const TitleItem = styled('h1')`
+&{
+    font-size: 20px;
+    color: #494b4f;
+    margin-bottom: 20px;
+}
+`
+
+export const WrapperDescription = styled('h1')`
+&{
+
 }
 `
 
@@ -33,6 +52,19 @@ export const ExtraVariablesWrapper = styled('div')`
 &{
     display: flex;
     flex-direction: column;
+    /* padding-top: 30px; */
+}
+`
+
+export const MainImageFirst = styled('img')`
+&{
+    position: absolute;
+    /* top: 50px; */
+    right: 100px;
+    width: 300px;
+    height: 300px;
+    /* top: -20px; */
+    /* left: -20px; */
 }
 `
 
@@ -40,11 +72,14 @@ export const MainImage = styled('img')`
 &{
     width: 200px;
     height: 200px;
+    top: -20px;
+    left: -20px;
 }
 `
 
 export const ButtonSubmit = styled('button')`
 & {
+    cursor: pointer;
     width: 150px;
     height: 70px;
     background-color: green;
@@ -65,5 +100,13 @@ export const AddVariaton = styled('div')`
 &{
     display: flex;
     flex-direction: column;
+    margin-bottom: 30px;
+}
+`
+
+export const WrapperVariables = styled('div')`
+&{
+   padding-top: 50px; 
+
 }
 `

@@ -32,9 +32,12 @@ const Icons: FC = () => {
                 <Link to={'/cart'}>
                     <CartIcon isHover={cartState} />
                 </Link>
-                <CartIcoTotal>
+                {
+                    cart.length ? 
+                    <CartIcoTotal>
                     {cart.length}
-                </CartIcoTotal>
+                </CartIcoTotal> : null
+                }
                 <CartList disp={cartState}>
                     <hr />
                     {cart && cart.length} товара в корзине
